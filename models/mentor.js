@@ -2,13 +2,13 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
-class User extends Model {
+class Mentor extends Model {
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
 }
 
-User.init(
+Mentor.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -19,6 +19,10 @@ User.init(
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    description:{
+        type: DataTypes.TEXT,
+        allowNull: false,
     },
     email: {
       type: DataTypes.STRING,
@@ -35,6 +39,14 @@ User.init(
         len: [8],
       },
     },
+    languages_id: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        references: {
+          model: 'languages',
+          key: 'id',
+        },
+    },
   },
   {
     hooks: {
@@ -47,8 +59,8 @@ User.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'user',
+    modelName: 'mentor',
   }
 );
 
-module.exports = User;
+module.exports = Mentor;
