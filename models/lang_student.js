@@ -1,11 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
-class Languages extends Model {
+class LangStudent extends Model {
 }
 
-Languages.init(
+LangStudent.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -13,18 +12,22 @@ Languages.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
+    student_id: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'student',
+          key: 'id',
+        },
     },
+
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'languages',
+    modelName: 'langstudent',
   }
 );
 
-module.exports = Languages;
+module.exports = LangStudent;
