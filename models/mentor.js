@@ -39,14 +39,6 @@ Mentor.init(
         len: [8],
       },
     },
-    languages_id: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-        references: {
-          model: 'languages',
-          key: 'id',
-        },
-    },
   },
   {
     hooks: {
