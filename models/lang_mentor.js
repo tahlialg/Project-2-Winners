@@ -19,6 +19,13 @@ LangMentor.init(
           key: 'id',
         },
     },
+    language_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'laguage',
+        key: 'id',
+      },
+  },
 
   },
   {

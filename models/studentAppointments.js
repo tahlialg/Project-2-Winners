@@ -1,16 +1,23 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class LangStudent extends Model {
+class StudentAppointments extends Model {
 }
 
-LangStudent.init(
+StudentAppointments.init(
   {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
+    },
+    appointment_id: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'appointment',
+          key: 'id',
+        },
     },
     student_id: {
         type: DataTypes.INTEGER,
@@ -19,13 +26,7 @@ LangStudent.init(
           key: 'id',
         },
     },
-    language_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'laguage',
-        key: 'id',
-      },
-  },
+  
 
   },
   {
@@ -33,8 +34,8 @@ LangStudent.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'langstudent',
+    modelName: 'studentappointments',
   }
 );
 
-module.exports = LangStudent;
+module.exports = StudentAppointments;
