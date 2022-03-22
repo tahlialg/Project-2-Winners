@@ -1,8 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class LangMentor extends Model {
-}
+class LangMentor extends Model {}
 
 LangMentor.init(
   {
@@ -13,11 +12,11 @@ LangMentor.init(
       autoIncrement: true,
     },
     mentor_id: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: 'mentor',
-          key: 'id',
-        },
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'mentor',
+        key: 'id',
+      },
     },
     language_id: {
       type: DataTypes.INTEGER,
@@ -25,8 +24,7 @@ LangMentor.init(
         model: 'laguage',
         key: 'id',
       },
-  },
-
+    },
   },
   {
     sequelize,
