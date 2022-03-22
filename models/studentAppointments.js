@@ -1,8 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class StudentAppointments extends Model {
-}
+class StudentAppointments extends Model {}
 
 StudentAppointments.init(
   {
@@ -13,21 +12,19 @@ StudentAppointments.init(
       autoIncrement: true,
     },
     appointment_id: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: 'appointment',
-          key: 'id',
-        },
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'appointment',
+        key: 'id',
+      },
     },
     student_id: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: 'student',
-          key: 'id',
-        },
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'student',
+        key: 'id',
+      },
     },
-  
-
   },
   {
     sequelize,

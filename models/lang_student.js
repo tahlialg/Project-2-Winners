@@ -1,4 +1,3 @@
-const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class LangStudent extends Model {
@@ -13,11 +12,11 @@ LangStudent.init(
       autoIncrement: true,
     },
     student_id: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: 'student',
-          key: 'id',
-        },
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'student',
+        key: 'id',
+      },
     },
     language_id: {
       type: DataTypes.INTEGER,
@@ -25,7 +24,7 @@ LangStudent.init(
         model: 'laguage',
         key: 'id',
       },
-  },
+    },
 
   },
   {
