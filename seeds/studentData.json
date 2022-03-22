@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Jordi Casey",
+    "email": "JordiCasey@hotmail.com",
+    "password": "password12345",
+    "description":"I suck at coding"
+  },
+  {
+    "name": "Layton Duncan",
+    "email": "LaytonDuncan@gmail.com",
+    "password": "password12345",
+    "description":"I suck at coding"
+  },
+  {
+    "name": "Jensen Klein",
+    "email": "JensenKlein@aol.com",
+    "password": "password12345",
+    "description":"I suck at coding"
+  },
+  {
+    "name": "Zena Nairn",
+    "email": "ZenaNairn@msn.com",
+    "password": "password12345",
+    "description":"I suck at coding"
+  },
+  {
+    "name": "Orson Pena",
+    "email": "OrsonPena@yahoo.com",
+    "password": "password12345",
+    "description":"I suck at coding"
+  }
+]
