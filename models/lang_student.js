@@ -1,7 +1,7 @@
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class LangStudent extends Model {
-}
+class LangStudent extends Model {}
 
 LangStudent.init(
   {
@@ -25,7 +25,6 @@ LangStudent.init(
         key: 'id',
       },
     },
-
   },
   {
     sequelize,
