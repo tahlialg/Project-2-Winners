@@ -1,6 +1,6 @@
-const { Model, DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const bcrypt = require("bcrypt");
+const sequelize = require("../config/connection");
 
 class Mentor extends Model {
   checkPassword(loginPw) {
@@ -20,9 +20,9 @@ Mentor.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description:{
-        type: DataTypes.TEXT,
-        allowNull: false,
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
     },
     email: {
       type: DataTypes.STRING,
@@ -51,7 +51,7 @@ Mentor.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'mentor',
+    modelName: "mentor",
   }
 );
 
