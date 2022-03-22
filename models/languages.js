@@ -1,9 +1,8 @@
-const { Model, DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const bcrypt = require("bcrypt");
+const sequelize = require("../config/connection");
 
-class Languages extends Model {
-}
+class Languages extends Model {}
 
 Languages.init(
   {
@@ -23,7 +22,7 @@ Languages.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'languages',
+    modelName: "languages",
   }
 );
 
