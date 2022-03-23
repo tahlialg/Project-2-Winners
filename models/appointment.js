@@ -21,14 +21,17 @@ Appointment.init(
     date_time: {
       type: DataTypes.DATE,
     },
-//TODO: enable later if time allows, limit appointments to a ceretain number of students
-   // max_students: {
-   //   type: DataTypes.INTEGER,
-   //   validate:{
-   //     min:1,
-   //     max:5
-   //   }
-   // },
+    accepted: {
+      type: DataTypes.BOOLEAN,
+    },
+    //TODO: enable later if time allows, limit appointments to a ceretain number of students
+    // max_students: {
+    //   type: DataTypes.INTEGER,
+    //   validate:{
+    //     min:1,
+    //     max:5
+    //   }
+    // },
   },
   {
     sequelize,
