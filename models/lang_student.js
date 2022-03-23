@@ -18,10 +18,10 @@ LangStudent.init(
         key: 'id',
       },
     },
-    language_id: {
+    languages_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'laguage',
+        model: 'languages',
         key: 'id',
       },
     },

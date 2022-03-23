@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Student } = require("../../models");
+const { Student, LangStudent } = require("../../models");
 
 router.post("/", async (req, res) => {
   try {
@@ -57,6 +57,26 @@ router.post("/logout", (req, res) => {
   } else {
     res.status(404).end();
   }
+});
+
+router.get("/:id", (req, res) => {
+  Student.findByPk(req.params.id, {
+    include: [
+      {
+        model: LangStudent
+      },
+    ],
+  }).then((student) => res.json(student));
+});
+
+router.get("/", (req, res) => {
+  Student.findAll({
+    include: [
+      {
+        model: LangStudent
+      },
+    ],
+  }).then((student) => res.json(student));
 });
 
 module.exports = router;

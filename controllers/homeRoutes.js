@@ -4,7 +4,7 @@ const withAuth = require("../utils/auth");
 
 const { Gallery, Painting } = require("../models");
 
-// GET one student
+// GET one student by id:
 router.get("/ga/:id", async (req, res) => {
   try {
     const dbGalleryData = await Gallery.findByPk(req.params.id, {
