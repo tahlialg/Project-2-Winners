@@ -1,35 +1,34 @@
 const router = require("express").Router();
 const { User } = require("../models");
 const withAuth = require("../utils/auth");
+const { Mentor, Student, StudentAppointments, Appointment, LangMentor, LangStudent } = require("../models");
 
-const { Gallery, Painting } = require("../models");
 
-// GET one student by id:
-router.get("/ga/:id", async (req, res) => {
-  try {
-    const dbGalleryData = await Gallery.findByPk(req.params.id, {
-      include: [
-        {
-          model: Painting,
-          attributes: [
-            "id",
-            "title",
-            "artist",
-            "exhibition_date",
-            "filename",
-            "description",
-          ],
-        },
-      ],
-    });
-
-    const gallery = dbGalleryData.get({ plain: true });
-    res.render("gallery", { gallery });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
+//router.get("/ga/:id", async (req, res) => {
+//  try {
+//    const dbGalleryData = await Gallery.findByPk(req.params.id, {
+//      include: [
+//        {
+//          model: Painting,
+//          attributes: [
+//            "id",
+//            "title",
+//            "artist",
+//            "exhibition_date",
+//            "filename",
+//            "description",
+//          ],
+//        },
+//      ],
+//    });
+//
+//    const gallery = dbGalleryData.get({ plain: true });
+//    res.render("gallery", { gallery });
+//  } catch (err) {
+//    console.log(err);
+//    res.status(500).json(err);
+//  }
+//});
 
 router.get("/", withAuth, async (req, res) => {
   try {
@@ -58,4 +57,24 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
+//sign up page
+router.get("/signup", (req, res) =>{
+  res.render("signup");
+});
+
+//about page
+router.get("/about", (req, res) =>{
+  res.render("about");
+});
+
+//dashboard
+router.get("/dasboard", (req, res) =>{
+  res.render("dasboard",{ Mentor, Student});
+  //add options for whether or not student or mentor before rendering the student details
+});
+
+//index/homepage
+router.get("/index", (req, res) =>{
+  res.render("index");
+});
 module.exports = router;

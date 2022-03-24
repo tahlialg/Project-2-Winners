@@ -3,30 +3,35 @@
       "name": "Greyson Southern",
       "email": "GreysonSouthern@hotmail.com",
       "password": "password12345",
-      "description":"I'm a pro at Javscript!"
+      "description":"I'm a pro at Javscript!",
+      "postcode": 3400
     },
     {
       "name": "Bill Gates",
       "email": "Billy@outlook.com",
       "password": "password12345",
-      "description":"I hate apple"
+      "description":"I hate apple",
+      "postcode": 6000
     },
     {
       "name": "Daisie Mellor",
       "email": "DaisieMellor@aol.com",
       "password": "password12345",
-      "description":"I want to help you"
+      "description":"I want to help you",
+      "postcode": 3400
     },
     {
       "name": "Anton Melendez",
       "email": "AntonMelendez@msn.com",
       "password": "password12345",
-      "description":"Hello"
+      "description":"Hello",
+      "postcode": 1100
     },
     {
       "name": "Karson Barry",
       "email": "KarsonBarry@yahoo.com",
       "password": "password12345",
-      "description":"let me teach you stuff"
+      "description":"let me teach you stuff",
+      "postcode": 1100
     }
 ]

@@ -33,6 +33,11 @@ Student.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    postcode:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue:1000,
+    },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
