@@ -18,11 +18,18 @@ Appointment.init(
         key: 'id',
       },
     },
+    student_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'student',
+        key: 'id',
+      },
+    },
     date_time: {
       type: DataTypes.DATE,
     },
-    accepted: {
-      type: DataTypes.BOOLEAN,
+    status: {
+      type: DataTypes.ENUM('available', 'requested', 'accepted'),
     },
     //TODO: enable later if time allows, limit appointments to a ceretain number of students
     // max_students: {

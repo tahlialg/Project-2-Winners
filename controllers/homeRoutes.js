@@ -1,8 +1,15 @@
 const router = require("express").Router();
 const { User } = require("../models");
 const withAuth = require("../utils/auth");
-const { Mentor, Student, StudentAppointments, Appointment, LangMentor, LangStudent } = require("../models");
-
+const {
+  Mentor,
+  Student,
+  // StudentAppointments,
+  Appointment,
+  LangMentor,
+  LangStudent,
+  Languages,
+} = require("../models");
 
 //router.get("/ga/:id", async (req, res) => {
 //  try {
@@ -58,23 +65,88 @@ router.get("/login", (req, res) => {
 });
 
 //sign up page
-router.get("/signup", (req, res) =>{
+router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
 //about page
-router.get("/about", (req, res) =>{
+router.get("/about", (req, res) => {
   res.render("about");
 });
 
-//dashboard
-router.get("/dasboard", (req, res) =>{
-  res.render("dasboard",{ Mentor, Student});
-  //add options for whether or not student or mentor before rendering the student details
+// mentor dashboard
+router.get("/dashboardmentor/:id", async (req, res) => {
+  const mentor = await Mentor.findByPk(req.params.id, {
+    include: [
+      {
+        // attributes: { exclude: ["langmentor"] },
+        model: Languages,
+        through: { attributes: [], LangMentor },
+        include: [{ model: Student, through: { attributes: [], LangStudent } }],
+      },
+    ],
+  });
+
+  // const students = student.languages.map((l) => l.mentors).flat();
+  // const uniqueIds = [];
+
+  // const uniqueMentors = mentors.filter((element) => {
+  //   const isDuplicate = uniqueIds.includes(element.id);
+
+  //   if (!isDuplicate) {
+  //     uniqueIds.push(element.id);
+
+  //     return true;
+  //   }
+  // });
+
+  const appointments = await Appointment.findAll({
+    where: {
+      mentor_id: req.params.id,
+    },
+  });
+
+  // res.json(student);
+  res.render("dashboard", { mentor, appointments });
+});
+//student dashboard
+router.get("/studentdashboard/:id", async (req, res) => {
+  const student = await Student.findByPk(req.params.id, {
+    include: [
+      {
+        // attributes: { exclude: ["langmentor"] },
+        model: Languages,
+        through: { attributes: [], LangStudent },
+        include: [{ model: Mentor, through: { attributes: [], LangMentor } }],
+      },
+    ],
+  });
+
+  const mentors = student.languages.map((l) => l.mentors).flat();
+  const uniqueIds = [];
+
+  const uniqueMentors = mentors.filter((element) => {
+    const isDuplicate = uniqueIds.includes(element.id);
+
+    if (!isDuplicate) {
+      uniqueIds.push(element.id);
+
+      return true;
+    }
+  });
+
+  const appointments = await Appointment.findAll({
+    where: {
+      student_id: req.params.id,
+    },
+  });
+
+  // res.json(student);
+  res.render("dashboard", { mentors: uniqueMentors, appointments, student });
 });
 
 //index/homepage
-router.get("/index", (req, res) =>{
+router.get("/index", (req, res) => {
   res.render("index");
 });
 module.exports = router;
