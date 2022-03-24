@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!--TITLE-->
+<title>Mentee Dashboard</title>
+
+<!--META TAGS-->
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta charset="UTF-8">
+
+<!--PLUGIN-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+<!--FONT AWESOME-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!--GOOGLE FONTS-->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Odibee+Sans&family=Oswald:wght@300;400&family=Ubuntu:wght@700&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Pattaya&display=swap" rel="stylesheet"> 
+
+<!--EXTERNAL CSS-->
+<link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<table>
+<tr>
+<td>
+<section>
+<label for="fileToUpload">
+<i class="fa fa-camera"></i>
+<input type="file" id="fileToUpload" style="visibility:hidden;" accept=".png,.jpg,jpeg,.PNG,.JPEG" name="fileToUpload" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
+</label>
+<img src="https://i.ibb.co/yNGW4gg/avatar.png" id="blah" alt="Avatar">
+</section>
+<h1>Alex Leroy</h1>
+<h3>Mentee</h3>
+</td>
+<td>
+<ul>
+<li><b>Full Name</b> <input type="text" name="fname" id="fname" maxlength="100" value="John Conner" required /> <i class="fa fa-edit" id="edit1" onclick="document.getElementById('fname').style.pointerEvents='auto';document.getElementById('fname').focus();this.style.display='none'; document.getElementById('check1').style.display='inline-block';"></i> <i class="fa fa-check" style="display:none;" id="check1" onclick="document.getElementById('edit1').style.display='inline-block';this.style.display='none';document.getElementById('fname').style.pointerEvents='none';"></i></li>
+<li><b>Email</b> <input type="email" name="email" id="email" maxlength="150" value="email@mail.com" required /></li>
+<li><b>Improvements</b> 
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td class="section2">
+<h2 style="text-align:left;">Mentor Matches</h2>
+
+<ul>
+  <span>
+    <li>Tahlia <button>Book Session</button></li>
+  </span>
+  <li>Tahlia</li>
+  <li>Tahlia</li>
+  <li>Tahlia</li>
+</ul>
+</td>
+<td class="inframe">
+<h2>Your Sessions</h2>
+<div class="col offset-md-1">
+  <div class="row">
+  </div>
+  <table class="table table-bordered table-hover table-striped table-sm" id="appointment_list">
+      <thead class="thead-dark">
+          <tr>
+              <th scope="col" class="text-center align-middle">Date</th>
+              <th scope="col" class="text-center align-middle">Time</th>
+          </tr>
+      </thead>
+      <tbody>
+      </tbody>
+  </table>
+</div>
+</div>
+
+
+<!--JAVASCRIPT-->
+<script src="js/custom.js"></script>
+<script>
+function editdetails2(){
+}
+
+var close = document.getElementsByClassName("closebtn");
+var i;
+
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function(){
+    var div = this.parentElement;
+    div.style.opacity = "0";
+    setTimeout(function(){ div.style.display = "none"; }, 600);
+  }
+}
+</script>
+</body>
+</html>
