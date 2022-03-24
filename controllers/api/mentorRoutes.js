@@ -77,7 +77,7 @@ router.get("/", (req, res) => {
   }).then((mentors) => res.json(mentors));
 });
 
-//havent tested
+//delete mentor
 router.delete("/:id", async (req, res) => {
   try {
     const mentorData = await Mentor.findOne({
@@ -87,7 +87,7 @@ router.delete("/:id", async (req, res) => {
     if (!mentorData) {
       res
         .status(400)
-        .json({ message: "Incorrect email or password, please try again" });
+        .json({ message: "Incorrect email, please try again" });
       return;
     }
 
@@ -96,12 +96,13 @@ router.delete("/:id", async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: "Incorrect email or password, please try again" });
+        .json({ message: "Incorrect password, please try again" });
       return;
     }
     mentorData.destroy();
+    res.json({ message: "user deleted" });
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json(err,);
   }
 });
 
