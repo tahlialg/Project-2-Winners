@@ -59,24 +59,50 @@ router.post("/logout", (req, res) => {
   }
 });
 
+//get student by there id (will include languages thursday)
 router.get("/:id", (req, res) => {
   Student.findByPk(req.params.id, {
-    include: [
-      {
-        model: LangStudent
-      },
-    ],
+    attributes: { exclude: ["password"] },
   }).then((student) => res.json(student));
 });
 
+//get all students
 router.get("/", (req, res) => {
   Student.findAll({
-    include: [
-      {
-        model: LangStudent
-      },
-    ],
-  }).then((student) => res.json(student));
+    //include: [
+    //  {
+    //    model: LangStudent
+    //  },
+    //],
+  }).then((students) => res.json(students));
+});
+
+//havent tested delete route
+router.delete("/:id", async (req, res) => {
+  try {
+    const studentData = await Student.findOne({
+      where: { email: req.body.email },
+    });
+
+    if (!studentData) {
+      res
+        .status(400)
+        .json({ message: "Incorrect email or password, please try again" });
+      return;
+    }
+
+    const validPassword = await studentData.checkPassword(req.body.password);
+
+    if (!validPassword) {
+      res
+        .status(400)
+        .json({ message: "Incorrect email or password, please try again" });
+      return;
+    }
+    studentData.destroy();
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
 
 module.exports = router;

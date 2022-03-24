@@ -59,4 +59,50 @@ router.post("/logout", (req, res) => {
   }
 });
 
+//get Mentor by there id (will include languages thursday)
+router.get("/:id", (req, res) => {
+  Mentor.findByPk(req.params.id, {
+    attributes: { exclude: ["password"] },
+  }).then((mentor) => res.json(mentor));
+});
+
+//get all mentors
+router.get("/", (req, res) => {
+  Mentor.findAll({
+    //include: [
+    //  {
+    //    model: LangMentor
+    //  },
+    //],
+  }).then((mentors) => res.json(mentors));
+});
+
+//havent tested
+router.delete("/:id", async (req, res) => {
+  try {
+    const mentorData = await Mentor.findOne({
+      where: { email: req.body.email },
+    });
+
+    if (!mentorData) {
+      res
+        .status(400)
+        .json({ message: "Incorrect email or password, please try again" });
+      return;
+    }
+
+    const validPassword = await mentorData.checkPassword(req.body.password);
+
+    if (!validPassword) {
+      res
+        .status(400)
+        .json({ message: "Incorrect email or password, please try again" });
+      return;
+    }
+    mentorData.destroy();
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 module.exports = router;
