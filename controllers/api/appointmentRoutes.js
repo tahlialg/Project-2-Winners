@@ -12,11 +12,11 @@ router.post("/", async (req, res) => {
   }
 });
 
-// accept appointment
+// request and accept appointment appointment
 router.put("/:id", async (req, res) => {
   try {
     const appointmentData = await Appointment.findByPk(req.params.id);
-    await appointmentData.update({ accepted: "true" });
+    await appointmentData.update({ status: req.body.status });
     await appointmentData.save;
     res.status(200).json(appointmentData);
   } catch (err) {
