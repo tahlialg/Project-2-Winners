@@ -41,7 +41,7 @@ router.post("/login", async (req, res) => {
     req.session.save(() => {
       req.session.Mentor_id = mentorData.id;
       req.session.logged_in = true;
-
+      req.session.user_type = 'mentor';
       res.json({ Mentor: mentorData, message: "You are now logged in!" });
     });
   } catch (err) {
