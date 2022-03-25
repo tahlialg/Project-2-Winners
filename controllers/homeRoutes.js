@@ -1,10 +1,8 @@
 const router = require("express").Router();
-const { User, Languages } = require("../models");
 const withAuth = require("../utils/auth");
 const {
   Mentor,
   Student,
- StudentAppointments,
   Appointment,
   LangMentor,
   LangStudent,
@@ -74,15 +72,32 @@ router.get("/about", (req, res) => {
   res.render("about");
 });
 
+//index/homepage
+router.get("/index", (req, res) => {
+  res.render("index");
+});
+
+router.use(withAuth);
+
 // mentor dashboard
 router.get("/dashboardmentor/:id", async (req, res) => {
+
+  // find out the current user type
+  // mentor can only view own mentor dashboard
+  const userType = req.session.user_type;
+  const isMentor = userType === 'mentor';
+  const mentorAllowable = isMentor && req.params.id === req.session.Mentor_id;
+  if(mentorAllowable){
+    return res.status(301).redirect('/login');
+  }
+
   const mentor = await Mentor.findByPk(req.params.id, {
     include: [
       {
         // attributes: { exclude: ["langmentor"] },
         model: Languages,
-        through: { attributes: [], LangMentor },
-        include: [{ model: Student, through: { attributes: [], LangStudent } }],
+        through: { attributes: [], model: LangMentor },
+        include: [{ model: Student, through: { attributes: [], model: LangStudent } }],
       },
     ],
   });
@@ -107,7 +122,9 @@ router.get("/dashboardmentor/:id", async (req, res) => {
   });
 
   // res.json(student);
-  res.render("dashboard", { mentor, appointments });
+
+
+  res.render("mentor-dashboard", { mentor, appointments, session: req.session });
 });
 //student dashboard
 router.get("/studentdashboard/:id", async (req, res) => {
@@ -145,8 +162,5 @@ router.get("/studentdashboard/:id", async (req, res) => {
   res.render("dashboard", { mentors: uniqueMentors, appointments, student });
 });
 
-//index/homepage
-router.get("/index", (req, res) => {
-  res.render("index");
-});
+
 module.exports = router;
