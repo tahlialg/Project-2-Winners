@@ -6,8 +6,9 @@ router.post("/", async (req, res) => {
     const mentorData = await Mentor.create(req.body);
 
     req.session.save(() => {
-      req.session.Mentor_id = mentorData.id;
+      req.session.user_id = mentorData.id;
       req.session.logged_in = true;
+      req.session.user_type = 'mentor';
 
       res.status(200).json(mentorData);
     });
@@ -39,7 +40,7 @@ router.post("/login", async (req, res) => {
     }
 
     req.session.save(() => {
-      req.session.Mentor_id = mentorData.id;
+      req.session.user_id = mentorData.id;
       req.session.logged_in = true;
       req.session.user_type = 'mentor';
       res.json({ Mentor: mentorData, message: "You are now logged in!" });

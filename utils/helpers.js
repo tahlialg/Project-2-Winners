@@ -1,14 +1,13 @@
 module.exports = {
-  get_emoji: () => {
-    const randomNum = Math.random();
-    let book = "📗";
+  
 
-    if (randomNum > 0.7) {
-      book = "📘";
-    } else if (randomNum > 0.4) {
-      book = "📙";
+  dashboardRoute: (userType, userId) => {
+    if(userType === 'mentor'){
+      return '/dashboardmentor/' + userId;
+    }else{
+      return '/dashboardstudent/' + userId;
     }
 
-    return `<span for="img" aria-label="book">${book}</span>`;
-  },
+
+  }
 };

@@ -86,7 +86,7 @@ router.get("/dashboardmentor/:id", async (req, res) => {
   // mentor can only view own mentor dashboard
   const userType = req.session.user_type;
   const isMentor = userType === 'mentor';
-  const mentorAllowable = isMentor && req.params.id === req.session.Mentor_id;
+  const mentorAllowable = isMentor && req.params.id === req.session.user_id;
   if(mentorAllowable){
     return res.status(301).redirect('/login');
   }
@@ -123,11 +123,28 @@ router.get("/dashboardmentor/:id", async (req, res) => {
 
   // res.json(student);
 
+  // 1. get mentor's lang preference
+  // const mentorLangs = await LangMentor.findAll({
+  //   where: {
+  //     mentor_id: mentor.id
+  //   }
+  // });
 
-  res.render("mentor-dashboard", { mentor, appointments, session: req.session });
+  // console.log(mentorLangs);
+
+  // const langIdsWanted = mentorLangs.map((lang) => lang.languages_id);
+
+  //  [3,4,7]
+
+  // 2. query all the students based on mentor's lang preference
+
+  // 3. load the students into res.render
+
+
+  res.render("mentor-dashboard", { mentor, appointments, session: req.session, possibleStudents });
 });
 //student dashboard
-router.get("/studentdashboard/:id", async (req, res) => {
+router.get("/dashboardstudent/:id", async (req, res) => {
   const student = await Student.findByPk(req.params.id, {
     include: [
       {
@@ -159,7 +176,7 @@ router.get("/studentdashboard/:id", async (req, res) => {
   });
 
   // res.json(student);
-  res.render("dashboard", { mentors: uniqueMentors, appointments, student });
+  res.render("mentee-dashboard", { mentors: uniqueMentors, appointments, student, session: req.session });
 });
 
 
