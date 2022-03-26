@@ -3,14 +3,16 @@ const { Student, LangStudent } = require("../../models");
 
 router.post("/", async (req, res) => {
   try {
-    const studentData = await Student.create(req.body);
+    const studentData = await Student.create({first_name: req.body.first_name,
+      last_name: req.body.last_name, email: req.body.email, description: req.body.description, postcode: req.body.postcode, password: req.body.password} );
+    const studentLanguages = await LangStudent.create({student_id: studentData.id, language_id: req.body.language_id});
 
     req.session.save(() => {
       req.session.user_id = studentData.id;
       req.session.logged_in = true;
       req.session.user_type = 'student';
 
-      res.status(200).json(studentData);
+      res.status(200).json(studentData, studentLanguages);
     });
   } catch (err) {
     res.status(400).json(err);
@@ -66,17 +68,6 @@ router.get("/:id", (req, res) => {
   Student.findByPk(req.params.id, {
     attributes: { exclude: ["password"] },
   }).then((student) => res.json(student));
-});
-
-//get all students
-router.get("/", (req, res) => {
-  Student.findAll({
-    //include: [
-    //  {
-    //    model: LangStudent
-    //  },
-    //],
-  }).then((students) => res.json(students));
 });
 
 //delete student user

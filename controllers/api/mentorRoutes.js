@@ -1,16 +1,18 @@
 const router = require("express").Router();
-const { Mentor } = require("../../models");
+const { Mentor, LangMentor } = require("../../models");
 
 router.post("/", async (req, res) => {
   try {
-    const mentorData = await Mentor.create(req.body);
+    const mentorData = await Mentor.create({first_name: req.body.first_name,
+      last_name: req.body.last_name, email: req.body.email, description: req.body.description, postcode: req.body.postcode, password: req.body.password} );
+    const mentorLanguages = await LangMentor.create({mentor_id: mentorData.id, language_id: req.body.language_id});
 
     req.session.save(() => {
       req.session.user_id = mentorData.id;
       req.session.logged_in = true;
       req.session.user_type = 'mentor';
 
-      res.status(200).json(mentorData);
+      res.status(200).json(mentorData, mentorLanguages);
     });
   } catch (err) {
     res.status(400).json(err);
@@ -65,17 +67,6 @@ router.get("/:id", (req, res) => {
   Mentor.findByPk(req.params.id, {
     attributes: { exclude: ["password"] },
   }).then((mentor) => res.json(mentor));
-});
-
-//get all mentors
-router.get("/", (req, res) => {
-  Mentor.findAll({
-    //include: [
-    //  {
-    //    model: LangMentor
-    //  },
-    //],
-  }).then((mentors) => res.json(mentors));
 });
 
 //delete mentor

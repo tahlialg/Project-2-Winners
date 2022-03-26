@@ -9,50 +9,6 @@ const {
   Languages,
 } = require("../models");
 
-//router.get("/ga/:id", async (req, res) => {
-//  try {
-//    const dbGalleryData = await Gallery.findByPk(req.params.id, {
-//      include: [
-//        {
-//          model: Painting,
-//          attributes: [
-//            "id",
-//            "title",
-//            "artist",
-//            "exhibition_date",
-//            "filename",
-//            "description",
-//          ],
-//        },
-//      ],
-//    });
-//
-//    const gallery = dbGalleryData.get({ plain: true });
-//    res.render("gallery", { gallery });
-//  } catch (err) {
-//    console.log(err);
-//    res.status(500).json(err);
-//  }
-//});
-
-//router.get("/", withAuth, async (req, res) => {
-//  try {
-//    const userData = await User.findAll({
-//      attributes: { exclude: ["password"] },
-//      order: [["name", "ASC"]],
-//    });
-//
-//    const users = userData.map((project) => project.get({ plain: true }));
-//
-//    res.render("homepage", {
-//      users,
-//      logged_in: req.session.logged_in,
-//    });
-//  } catch (err) {
-//    res.status(500).json(err);
-//  }
-//});
-
 router.get("/login", (req, res) => {
   if (req.session.logged_in) {
     res.redirect("/");
@@ -62,10 +18,15 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-//sign up page
-router.get("/signup", (req, res) => {
-  res.render("signup");
+//sign up page mentee
+router.get("/signup-mentee", (req, res) => {
+  res.render("signupMentee");
 });
+
+router.get("/signup-mentor", (req, res) => {
+  res.render("signupMentor");
+});
+
 
 //about page
 router.get("/about", (req, res) => {
