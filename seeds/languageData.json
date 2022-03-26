@@ -1,20 +1,23 @@
 [
-    {
-      "name": "Javascript" 
-    },
-    {
-      "name": "Java"
-    },
-    {
-      "name": "Python"
-   
-    },
-    {
-      "name": "C#"
-     
-    },
-    {
-      "name": "Swift"
-   
-    }
-  ]
+  {
+    "name": "Css"
+  },
+  {
+    "name": "Java Script"
+  },
+  {
+    "name": "Node.js"
+  },
+  {
+    "name": "Express"
+  },
+  {
+    "name": "MVC"
+  },
+  {
+    "name": "Handlebars"
+  },
+  {
+    "name": "Sequelize"
+  }
+]
