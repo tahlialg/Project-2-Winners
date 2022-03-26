@@ -1,5 +1,5 @@
 module.exports = {
-  
+
 
   dashboardRoute: (userType, userId) => {
     if(userType === 'mentor'){
