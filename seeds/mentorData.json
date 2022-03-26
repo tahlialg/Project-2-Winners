@@ -1,37 +1,37 @@
 [
-    {
-      "name": "Greyson Southern",
-      "email": "GreysonSouthern@hotmail.com",
-      "password": "password12345",
-      "description":"I'm a pro at Javscript!",
-      "postcode": 3400
-    },
-    {
-      "name": "Bill Gates",
-      "email": "Billy@outlook.com",
-      "password": "password12345",
-      "description":"I hate apple",
-      "postcode": 6000
-    },
-    {
-      "name": "Daisie Mellor",
-      "email": "DaisieMellor@aol.com",
-      "password": "password12345",
-      "description":"I want to help you",
-      "postcode": 3400
-    },
-    {
-      "name": "Anton Melendez",
-      "email": "AntonMelendez@msn.com",
-      "password": "password12345",
-      "description":"Hello",
-      "postcode": 1100
-    },
-    {
-      "name": "Karson Barry",
-      "email": "KarsonBarry@yahoo.com",
-      "password": "password12345",
-      "description":"let me teach you stuff",
-      "postcode": 1100
-    }
+  { "first_name": "Greyson",
+    "last_name": "Southern",
+    "email": "GreysonSouthern@hotmail.com",
+    "password": "password12345",
+    "description": "I'm a pro at Javscript! if (you === needhelp) {greeting = 'How can i help?';}",
+    "postcode": 3400
+  },
+  { "first_name": "Bill ",
+    "last_name": "Gates",
+    "email": "Billy@outlook.com",
+    "password": "password12345",
+    "description": "I hate apple",
+    "postcode": 6000
+  },
+  { "first_name": "Daisie",
+    "last_name": "Mellor",
+    "email": "DaisieMellor@aol.com",
+    "password": "password12345",
+    "description": "Want to ace your first interview, i can give you tips",
+    "postcode": 3400
+  },
+  { "first_name": "Anton",
+    "last_name": "Melendez",
+    "email": "AntonMelendez@msn.com",
+    "password": "password12345",
+    "description": "I have 30 years of experience, let me guide you through your career",
+    "postcode": 1100
+  },
+  { "first_name": "Karson",
+    "last_name": "Barry",
+    "email": "KarsonBarry@yahoo.com",
+    "password": "password12345",
+    "description": "let me teach you stuff",
+    "postcode": 1100
+  }
 ]

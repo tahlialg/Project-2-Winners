@@ -6,7 +6,6 @@ const {
   LangMentor,
   LangStudent,
   Appointment,
-  // StudentAppointments,
 } = require("../models");
 
 const studentData = require("./studentData.json");
@@ -18,7 +17,6 @@ const lang_mentorData = require("./lang_mentorData.json");
 const lang_studentData = require("./lang_studentData.json");
 
 const appointmentData = require("./appointmentData.json");
-// const studentAppointmentData = require("./studentAppointmentData.json");
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -52,11 +50,6 @@ const seedDatabase = async () => {
     individualHooks: true,
     returning: true,
   });
-
-  // await StudentAppointments.bulkCreate(studentAppointmentData, {
-  //   individualHooks: true,
-  //   returning: true,
-  // });
 
   process.exit(0);
 };
