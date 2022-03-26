@@ -1,90 +1,30 @@
+<section class="vh-75">
+      <div class="container py-5 h-75">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card bg-dark text-white" style="border-radius: 1rem;">
+              <div class="card-body p-5 text-center">
+                <div class="mb-md-5 mt-md-4 pb-5">
+                  <h2 class="fw-bold mb-2 text-uppercase">What would you like to do</h2>
+                  <p class="text-white-50 mb-5">Menor or Mentee?</p>
 
-
-<section class="vh-50">
-        <div class="container py-5 h-50">
-          <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-              <div class="card bg-dark text-white" style="border-radius: 1rem;">
-                <div class="card-body p-5 text-center">
-                  <div class="mb-md-4 mt-md-4 pb-5">
-    
-                    <h2 class="fw-bold mb-2 text-uppercase">Wecome Please complete the following:</h2>
-                    <div class="form-outline form-white">
-                    <form>
-                        <br>
-                        <label for="Mentor-Mentee">Please selected option(required)</label>
-                        <select class="form-select" aria-label="Default select example">
-                          <option selected>Please Select Mentor or Mentee</option>
-                          <option value="1">Mentor</option>
-                          <option value="2">Mentee</option> 
-                        </select>
-                        <div class="form-group">
-                            <label for="firstName">First Name (required)</label>
-                            <input type="text" class="form-control is-invalid" id="firstName" placeholder=" Frist-Name " required>
-                        </div>
-                        <div class="form-group">
-                            <label for="lastName">Last Name (required)</label>
-                            <input type="text" class="form-control" id="lastName" placeholder="Last-Name"required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email address (required)</label>
-                            <input type="email" class="form-control" id="email" placeholder="name@gmail.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="postCode">Post Code (required)</label>
-                            <input type="postCode" class="form-control" id="postCode" placeholder="12345"required>
-                        </div>
-                        <div class="form-outline">
-                            <label class="form-label" for="typePassword">Password(required)</label>
-                            <input type="password" id="typePassword" class="form-control" placeholder="password"required>
-                            
-                          </div>
-                        <form>
-                            <div class="form-group">
-                                <label for="profilePic">Profile Picture (optional)</label>
-                                <input type="file" class="form-control-file" id="profilePic">
-                            </div>
-                        </form>
-                        <div class="form-group">
-                            <label for="occupations">Select items from the below list that you wish to mentor in (required one choice). *You can add two additional
-                                choices by holding the command key(Mac) or control key(Windows).</label>
-                                <select class="form-select" multiple aria-label="multiple select example">
-                                  <option>Html</option>
-                                  <option>Css</option>
-                                  <option>Java Script</option>
-                                  <option>Node.js</option>
-                                  <option>Mysql</option>
-                                  <option>Express</option>
-                                  <option>MVC</option>
-                                  <option>Handlebars</option>
-                                  <option>Sequelize</option>
-                                </select>
-                            
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Tell us about your job experience (required) *The more information you provide, the better the match!</label>
-                            <textarea class="form-control" id="experienceBlurb" rows="4"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Tell us what a day at your job is like (optional but helpful)</label>
-                            <textarea class="form-control" id="dayLikeBlurb" rows="4"></textarea>
-                        </div>
-                    </div>
-                    </form>
-                    <br>
-                    <button id="MentorSubmit" type="submit" class="btn btn-primary btn-lg" onclick="signupFormHandler()"Sign Up</button>
-                    <br>
-                    <br>
-                       <div>
-              <p class="mb-0">Have an account? <a href="/login" class="text-white-50 fw-bold">Log In</a></p>
-            </div>
+                  <a href="/signupMentor">
+                  <button class="btn btn-outline-light btn-lg px-5" type="submit">Be a Mentor</button>
+                </a>
+                  <br>
+                  <br>
+                  <a href="/signupMentee">
+                  <button class="btn btn-outline-light btn-lg px-5" type="submit"  >Find a Mentor</button>
+                </a>
                 </div>
+                 <div>
+                  <p class="mb-0">Already have account? <a href="/login" class="text-white-50 fw-bold">Log in</a></p>
+                </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    
-            </div>
-        </div>
+      </div>
     </section>
-
-<script src="/js/signup.js"></script>
-    
+<script src="/js/login.js"></script>

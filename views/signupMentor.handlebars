@@ -1,0 +1,78 @@
+
+
+<section class="vh-50">
+        <div class="container py-5 h-50">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+              <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                <div class="card-body p-5 text-center">
+                  <div class="mb-md-4 mt-md-4 pb-5">
+    
+                    <h2 class="fw-bold mb-2 text-uppercase">Wecome Please complete the following:</h2>
+                    <div class="form-outline form-white">
+                    <form>
+                        <br>
+    
+                        <div class="form-group">
+                            <label for="firstName">First Name (required)</label>
+                            <input type="text" class="form-control is-invalid" id="firstName" placeholder=" Frist-Name " required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name (required)</label>
+                            <input type="text" class="form-control  is-invalid" id="lastName" placeholder="Last-Name"required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email address (required)</label>
+                            <input type="email" class="form-control  is-invalid" id="email" placeholder="name@gmail.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="postCode">Post Code (required)</label>
+                            <input type="postCode" class="form-control  is-invalid" id="postCode" placeholder="12345"required>
+                        </div>
+                        <div class="form-outline">
+                            <label class="form-label" for="typePassword">Password(required)</label>
+                            <input type="password" id="typePassword  is-invalid" class="form-control" placeholder="password"required>
+                            
+                          </div>
+                      
+                        <div class="form-group">
+                            <label for="occupations">Select items from the below list that you wish to mentor in (required one choice). *You can add two additional
+                                choices by holding the command key(Mac) or control key(Windows).</label>
+                                <select class="form-select" multiple aria-label="multiple select example">
+                                  <option>Html</option>
+                                  <option>Css</option>
+                                  <option>Java Script</option>
+                                  <option>Node.js</option>
+                                  <option>Mysql</option>
+                                  <option>Express</option>
+                                  <option>MVC</option>
+                                  <option>Handlebars</option>
+                                  <option>Sequelize</option>
+                                </select>
+                            
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Tell us about your job experience (required) *The more information you provide, the better the match!</label>
+                            <textarea class="form-control" id="experienceBlurb" rows="4"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Tell us what a day at your job is like (optional but helpful)</label>
+                            <textarea class="form-control" id="dayLikeBlurb" rows="4"></textarea>
+                        </div>
+                    </div>
+                    </form>
+                    
+                   <button class="btn btn-outline-light btn-lg px-5" id="signUp" type="submit">Sign Up</button>
+            </div>
+            <div>
+              <p class="mb-0">Already have account? <a href="/login" class="text-white-50 fw-bold">Log in</a></p>
+            </div>
+                
+        </div>
+    
+            </div>S
+        </div>
+    </section>
+
+<script src="/js/signupMentor.js"></script>
+    
