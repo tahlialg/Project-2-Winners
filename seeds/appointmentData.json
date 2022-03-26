@@ -2,7 +2,18 @@
   {
     "mentor_id": "1",
     "date_time": "2017-11-28",
-    "status": "available",
+    "status": "requested",
+    "student_id": "1"
+  },
+  {
+    "mentor_id": "1",
+    "date_time": "2017-11-29",
+    "status": "available"
+  },
+  {
+    "mentor_id": "1",
+    "date_time": "2017-11-13",
+    "status": "accepted",
     "student_id": "1"
   }
 ]

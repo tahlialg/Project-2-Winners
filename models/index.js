@@ -1,6 +1,10 @@
 const Mentor = require('./mentor');
 const Student = require('./student');
-// const StudentAppointments = require('./studentAppointments');
+// <<<<<<< george-2
+
+// =======
+// // const StudentAppointments = require('./studentAppointments');
+// >>>>>>> main
 const Appointment = require('./appointment');
 const LangMentor = require('./lang_mentor');
 const LangStudent = require('./lang_student');

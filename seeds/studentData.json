@@ -3,30 +3,30 @@
     "name": "Jordi Casey",
     "email": "JordiCasey@hotmail.com",
     "password": "password12345",
-    "description":"I suck at coding"
+    "description": "I'm struglling to explain Css and Javascript, looking for an understanding mentor"
   },
   {
     "name": "Layton Duncan",
     "email": "LaytonDuncan@gmail.com",
     "password": "password12345",
-    "description":"I suck at coding"
+    "description": "I've just started a new job as a junior web developer but am getting overwhelmed"
   },
   {
     "name": "Jensen Klein",
     "email": "JensenKlein@aol.com",
     "password": "password12345",
-    "description":"I suck at coding"
+    "description": "My lecturer is very hard to understand, i need a different perspective"
   },
   {
     "name": "Zena Nairn",
     "email": "ZenaNairn@msn.com",
     "password": "password12345",
-    "description":"I suck at coding"
+    "description": "Hello World"
   },
   {
     "name": "Orson Pena",
     "email": "OrsonPena@yahoo.com",
     "password": "password12345",
-    "description":"I suck at coding"
+    "description": "I have exams coming up and need some guidance"
   }
 ]
