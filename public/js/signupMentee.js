@@ -7,8 +7,8 @@ async function signUpFormHandler(event) {
   const postcode = document.querySelector('#postCode').value.trim();
   const password = document.querySelector('#typePassword').value.trim();
   const language = document.querySelector('#language').value.trim();
-
-  if (firstName && lastName && email && postcode && password & language) {
+  const description = document.querySelector('#experienceBlurb').value.trim();
+  if (firstName && lastName && email && postcode && password && language && description) {
     const response = await fetch('/api/student', {
       method: 'post',
       body: JSON.stringify({
@@ -17,7 +17,8 @@ async function signUpFormHandler(event) {
         email,
         postcode,
         password,
-        language
+        language,
+        description
       }),
       headers: { 'Content-Type': 'application/json' }
     });

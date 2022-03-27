@@ -1,4 +1,5 @@
-async function loginFormHandler(event) {
+async function loginFormHandler(event){
+  event.preventDefault();
   const email = document.querySelector('#email-login').value.trim();
   const password = document.querySelector('#password-login').value.trim();
 
@@ -13,7 +14,7 @@ async function loginFormHandler(event) {
     });
 
     if (response.ok) {
-      document.location.replace('/dashboard');
+      document.location.replace('/mentor-dashboard');
     } else {
       alert("Incorrect email or password");
       document.location.reload();
