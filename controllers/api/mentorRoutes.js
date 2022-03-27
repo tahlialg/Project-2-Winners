@@ -12,7 +12,7 @@ router.post("/", async (req, res) => {
       req.session.logged_in = true;
       req.session.user_type = 'mentor';
 
-      res.status(200).json(mentorData, mentorLanguages);
+      res.status(200).json([mentorData, mentorLanguages]);
     });
   } catch (err) {
     res.status(400).json(err);
