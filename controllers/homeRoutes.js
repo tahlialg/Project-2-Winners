@@ -11,15 +11,21 @@ const {
 
 router.get("/login", (req, res) => {
   if (req.session.logged_in) {
-    res.redirect("/");
+    res.redirect("/index");
     return;
   }
 
   res.render("login");
 });
-
+router.get("/signup", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/index");
+    return;
+  }
+  res.render("signup");
+});
 //sign up page mentee
-router.get("/signup-mentee", (req, res) => {
+router.get("/signup-student", (req, res) => {
   res.render("signupMentee");
 });
 
@@ -33,11 +39,19 @@ router.get("/about", (req, res) => {
   res.render("about");
 });
 
-//index/homepage
-router.get("/index", (req, res) => {
-  res.render("index");
-});
 
+//index/homepage
+// router.get("/index", (req, res) => {
+//   res.render("index");
+// });
+router.get('/', async (req, res) => {
+  try {
+    res.render('index');
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 router.use(withAuth);
 
 // mentor dashboard
