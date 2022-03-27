@@ -1,103 +1,83 @@
+
+  <script src="https://unpkg.com/simple-jscalendar@1.4.4/source/jsCalendar.min.js" integrity="sha384-0LaRLH/U5g8eCAwewLGQRyC/O+g0kXh8P+5pWpzijxwYczD3nKETIqUyhuA8B/UB" crossorigin="anonymous"></script>
+	
+  <link rel="stylesheet" href="https://unpkg.com/simple-jscalendar@1.4.4/source/jsCalendar.min.css" integrity="sha384-44GnAqZy9yUojzFPjdcUpP822DGm1ebORKY8pe6TkHuqJ038FANyfBYBpRvw8O9w" crossorigin="anonymous">
+
 <link rel="stylesheet" href="css/dashboard.css">
 
 <div class="container">
 
-<table>
-<tr>
-<td>
-<section>
-<label for="fileToUpload">
-<i class="fa fa-camera"></i>
-<input type="file" id="fileToUpload" style="visibility:hidden;" accept=".png,.jpg,jpeg,.PNG,.JPEG" name="fileToUpload" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
-</label>
-<img src="https://i.ibb.co/yNGW4gg/avatar.png" id="blah" alt="Avatar">
-</section>
-<h1>Alex Leroy</h1>
-<h3>Mentee</h3>
-</td>
-<td>
-<ul>
-<li><b>Full Name</b> <input type="text" name="fname" id="fname" maxlength="100" value="John Conner" required /> <i class="fa fa-edit" id="edit1" onclick="document.getElementById('fname').style.pointerEvents='auto';document.getElementById('fname').focus();this.style.display='none'; document.getElementById('check1').style.display='inline-block';"></i> <i class="fa fa-check" style="display:none;" id="check1" onclick="document.getElementById('edit1').style.display='inline-block';this.style.display='none';document.getElementById('fname').style.pointerEvents='none';"></i></li>
-<li><b>Email</b> <input type="email" name="email" id="email" maxlength="150" value="email@mail.com" required /></li>
-<li><b>Improvements</b> 
-</li>
-</ul>
-</td>
-</tr>
-<tr>
-<td class="section2">
-<h2 style="text-align:left;">Mentor Matches</h2>
-
-<ul>
-  <span>
-    <li>Tahlia
-        <button type="button" class="btn btn-success nt-3" id="sessionBtn" onclick="sessionBtn()">Book Session</button>
+    <table>
+    <tr>
+    <td>
+    <section>
+    <label for="fileToUpload">
+    <i class="fa fa-camera"></i>
+    <input type="file" id="fileToUpload" style="visibility:hidden;" accept=".png,.jpg,jpeg,.PNG,.JPEG" name="fileToUpload" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
+    </label>
+    <img src="https://i.ibb.co/yNGW4gg/avatar.png" id="blah" alt="Avatar">
+    </section>
+    <h1>{{mentorData.first_name}} {{mentorData.first_name}}</h1>
+    <h3>Mentee</h3>
+    </td>
+    <td>
+    <ul>
+    <li><b>Full Name</b> <input type="text" name="fname" id="fname" maxlength="100" value={{mentorData.first_name}} {{mentorData.first_name}} /></li>
+    <li><b>Email</b> <input type="email" name="email" id="email" maxlength="150" value= {{mentorData.email}} /></li>
+    <li><b>About <p>{{mentorData.description}} </p></b> 
     </li>
-  </span>
-</ul>
-
-<div class="calendar" id="hide" style="visibility:hidden">
-  <div id="container">
-    <div id="header">
-      <div id="monthDisplay"></div>
-      <div>
-        <button id="backButton">Back</button>
-        <button id="nextButton">Next</button>
+    </ul>
+    </td>
+    </tr>
+    <tr>
+    <td class="section2">
+    <h2 style="text-align:left;">Mentee Matches</h2>
+    
+    <ul>
+      <span>
+        <li>Tahlia La Galia
+            <button type="button" class="btn btn-success nt-3" id="sessionBtn" onclick="sessionBtn()">Book Session</button>
+        </li>
+      </span>
+    </ul>
+    
+    <div class="calender" id="hide" style="visibility:hidden">
+      <div class="description">
+        <div style="font-size: 1.4em;">Session Availbility  </div>
+        <div>Request Mentor Session</div>
       </div>
+  
+      <!-- Wrapper -->
+      <div id="wrapper">
+        <!-- Calendar element -->
+        <div id="events-calendar"></div>
+        <!-- Events -->
+        <div id="events"></div>
+        <!-- Clear -->
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+      <button type="button" class="btn btn-success nt-3" id="colseBtn" onclick="closeBtn()">Close</button>
+    </div>
+    
+    </td>
+    <td class="inframe">
+    <h2>Your Sessions</h2>
+    <div class="col offset-md-1">
+      <div class="row">
+      </div>
+      <table class="table table-bordered table-hover table-striped table-sm" id="appointment_list">
+          <thead class="thead-dark">
+              <tr>
+                  <th scope="col" class="text-center align-middle">Mentor</th>
+                  <th scope="col" class="text-center align-middle">Date</th>
+                  <th scope="col" class="text-center align-middle">Time</th>
+              </tr>
+          </thead>
+          <tbody>
+          </tbody>
+      </table>
+    </div>
     </div>
 
-    <div id="weekdays">
-      <div>Sunday</div>
-      <div>Monday</div>
-      <div>Tuesday</div>
-      <div>Wednesday</div>
-      <div>Thursday</div>
-      <div>Friday</div>
-      <div>Saturday</div>
-    </div>
-
-    <div id="calendar"></div>
-  </div>
-
-  <div id="newEventModal">
-    <h2>New Event</h2>
-
-    <input id="eventTitleInput" placeholder="Event Title" />
-
-    <button id="saveButton">Save</button>
-    <button id="cancelButton">Cancel</button>
-  </div>
-
-  <div id="deleteEventModal">
-    <h2>Event</h2>
-
-    <p id="eventText"></p>
-
-    <button id="deleteButton">Delete</button>
-    <button id="closeButton">Close</button>
-  </div>
-
-  <div id="modalBackDrop"></div>
-
-</div>
-
-</td>
-<td class="inframe">
-<h2>Your Sessions</h2>
-<div class="col offset-md-1">
-  <div class="row">
-  </div>
-  <table class="table table-bordered table-hover table-striped table-sm" id="appointment_list">
-      <thead class="thead-dark">
-          <tr>
-              <th scope="col" class="text-center align-middle">Date</th>
-              <th scope="col" class="text-center align-middle">Time</th>
-          </tr>
-      </thead>
-      <tbody>
-      </tbody>
-  </table>
-</div>
-</div>
-
-<script src="../js/mentee.js"></script>
+<script src="/js/jsCalendar.js"></script>
