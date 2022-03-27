@@ -25,6 +25,7 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 //sign up page mentee
+
 // router.get("/signup-mentee", (req, res) => {
 //   res.render("signupMentee");
 // });
@@ -51,6 +52,25 @@ router.get("/signup", (req, res) => {
 // router.get("/about", (req, res) => {
 //   res.render("about");
 // });
+
+router.get("/signup-mentee", (req, res) => {
+  res.render("signup-mentee");
+});
+
+router.get("/signup-mentor", (req, res) => {
+  res.render("signup-mentor");
+});
+router.get("/login-mentor", (req, res) => {
+  res.render("login-mentor");
+});
+router.get("/login-mentee", (req, res) => {
+  res.render("login-mentee");
+});
+//about page
+router.get("/about", (req, res) => {
+  res.render("about");
+});
+
 
 
 //index/homepage
