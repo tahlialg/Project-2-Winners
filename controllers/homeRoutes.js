@@ -26,17 +26,17 @@ router.get("/signup", (req, res) => {
 });
 //sign up page mentee
 router.get("/signup-mentee", (req, res) => {
-  res.render("signupMentee");
+  res.render("signup-mentee");
 });
 
 router.get("/signup-mentor", (req, res) => {
-  res.render("signupMentor");
+  res.render("signup-mentor");
 });
 router.get("/login-mentor", (req, res) => {
-  res.render("loginMentor");
+  res.render("login-mentor");
 });
 router.get("/login-mentee", (req, res) => {
-  res.render("loginMentee");
+  res.render("login-mentee");
 });
 //about page
 router.get("/about", (req, res) => {
