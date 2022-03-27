@@ -11,7 +11,7 @@ const {
 
 router.get("/login", (req, res) => {
   if (req.session.logged_in) {
-    res.redirect("/index");
+    res.redirect("/");
     return;
   }
 
@@ -19,21 +19,25 @@ router.get("/login", (req, res) => {
 });
 router.get("/signup", (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect("/index");
+    res.redirect("/");
     return;
   }
   res.render("signup");
 });
 //sign up page mentee
-router.get("/signup-student", (req, res) => {
+router.get("/signup-mentee", (req, res) => {
   res.render("signupMentee");
 });
 
 router.get("/signup-mentor", (req, res) => {
   res.render("signupMentor");
 });
-
-
+router.get("/login-mentor", (req, res) => {
+  res.render("loginMentor");
+});
+router.get("/login-mentee", (req, res) => {
+  res.render("loginMentee");
+});
 //about page
 router.get("/about", (req, res) => {
   res.render("about");
