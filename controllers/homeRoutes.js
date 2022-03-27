@@ -71,12 +71,11 @@ router.get("/about", (req, res) => {
   res.render("about");
 });
 
-
-
 //index/homepage
 // router.get("/index", (req, res) => {
 //   res.render("index");
 // });
+
 router.get('/', async (req, res) => {
   try {
     res.render('index');
@@ -97,7 +96,7 @@ router.get("/dashboardmentor/:id", async (req, res) => {
   const isMentor = userType === 'mentor';
   const mentorAllowable = isMentor && req.params.id === req.session.user_id;
   if(mentorAllowable){
-    return res.status(301).redirect('/login');
+    return res.status(301).redirect('/login-mentee');
   }
 
   const mentor = await Mentor.findByPk(req.params.id, {
@@ -152,6 +151,7 @@ router.get("/dashboardmentor/:id", async (req, res) => {
   //possibleStudents
   res.render("mentor-dashboard", { mentor, appointments, session: req.session, });
 });
+
 //student dashboard
 router.get("/dashboardstudent/:id", async (req, res) => {
   const student = await Student.findByPk(req.params.id, {
@@ -184,7 +184,7 @@ router.get("/dashboardstudent/:id", async (req, res) => {
     },
   });
 
-  // res.json(student);
+  res.json(student);
   res.render("mentee-dashboard", { mentors: uniqueMentors, appointments, student, session: req.session });
 });
 
