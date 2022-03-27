@@ -12,7 +12,7 @@ router.post("/", async (req, res) => {
       req.session.logged_in = true;
       req.session.user_type = 'student';
 
-      res.status(200).json(studentData, studentLanguages);
+      res.status(200).json([studentData, studentLanguages]);
     });
   } catch (err) {
     res.status(400).json(err);

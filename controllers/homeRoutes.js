@@ -38,7 +38,7 @@ router.get("/index", (req, res) => {
   res.render("index");
 });
 
-router.use(withAuth);
+//router.use(withAuth);
 
 // mentor dashboard
 router.get("/dashboardmentor/:id", async (req, res) => {
@@ -101,8 +101,8 @@ router.get("/dashboardmentor/:id", async (req, res) => {
 
   // 3. load the students into res.render
 
-
-  res.render("mentor-dashboard", { mentor, appointments, session: req.session, possibleStudents });
+//possibleStudents
+  res.render("mentor-dashboard", { mentor, appointments, session: req.session, });
 });
 //student dashboard
 router.get("/dashboardstudent/:id", async (req, res) => {
