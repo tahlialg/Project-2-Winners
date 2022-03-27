@@ -11,7 +11,7 @@ const {
 
 router.get("/login", (req, res) => {
   if (req.session.logged_in) {
-    res.redirect("/");
+    res.redirect("/index");
     return;
   }
 
@@ -19,29 +19,38 @@ router.get("/login", (req, res) => {
 });
 router.get("/signup", (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect("/");
+    res.redirect("/index");
     return;
   }
   res.render("signup");
 });
 //sign up page mentee
-router.get("/signup-mentee", (req, res) => {
-  res.render("signupMentee");
-});
-
-router.get("/signup-mentor", (req, res) => {
-  res.render("signupMentor");
-});
-router.get("/login-mentor", (req, res) => {
-  res.render("loginMentor");
-});
-router.get("/login-mentee", (req, res) => {
-  res.render("loginMentee");
-});
-//about page
-router.get("/about", (req, res) => {
-  res.render("about");
-});
+// router.get("/signup-mentee", (req, res) => {
+//   res.render("signupMentee");
+// });
+// router.get("/signup-mentee", (req, res) => {
+//   if (req.session.loggedIn) {
+//     res.redirect("/home");
+//     return;
+//   }
+//   res.render("signupMentee");
+// });
+// router.get("/signup-mentor", (req, res) => {
+//   res.render("signup-mentor");
+// });
+// router.get("/signup-mentee", (req, res) => {
+//   res.render("signup-mentor");
+// });
+// router.get("/login-mentor", (req, res) => {
+//   res.render("login-mentor");
+// });
+// router.get("/login-mentee", (req, res) => {
+//   res.render("login-mentee");
+// });
+// //about page
+// router.get("/about", (req, res) => {
+//   res.render("about");
+// });
 
 
 //index/homepage
@@ -120,7 +129,7 @@ router.get("/dashboardmentor/:id", async (req, res) => {
 
   // 3. load the students into res.render
 
-//possibleStudents
+  //possibleStudents
   res.render("mentor-dashboard", { mentor, appointments, session: req.session, });
 });
 //student dashboard
