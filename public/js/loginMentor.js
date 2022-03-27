@@ -1,0 +1,25 @@
+async function loginFormHandler(event) {
+  const email = document.querySelector('#email-login').value.trim();
+  const password = document.querySelector('#password-login').value.trim();
+
+  if (email && password) {
+    const response = await fetch('/api/mentor/login', {
+      method: 'post',
+      body: JSON.stringify({
+        email,
+        password
+      }),
+      headers: { 'Content-Type': 'application/json' }
+    });
+
+    if (response.ok) {
+      document.location.replace('/mentor-dashboard');
+    } else {
+      alert("Incorrect email or password");
+      document.location.reload();
+    }
+  } else if (!password || !email) {
+    alert("You need to provide both: email and password");
+  }
+}
+document.querySelector("#logIn").addEventListener("click", loginFormHandler);
