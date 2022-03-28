@@ -6,11 +6,21 @@ const { Appointment } = require("../../models");
 router.post("/", async (req, res) => {
   try {
     console.log(req.body);
-    const appointmentData = await Appointment.create({
-      ...req.body,
-      mentor_id: req.session.user_id,
-    });
-    res.status(200).json(appointmentData);
+    if (req.session.user_type === "mentor") {
+      const appointmentData = await Appointment.create({
+        ...req.body,
+        mentor_id: req.session.user_id,
+      });
+      res.status(200).json(appointmentData);
+    }
+    if (req.session.user_type === "student") {
+      const appointmentData = await Appointment.create({
+        date_time: req.body.date_time,
+        student_id: req.session.user_id,
+        mentor_id: req.body.student_id,
+      });
+      res.status(200).json(appointmentData);
+    }
   } catch (err) {
     res.status(400).json(err);
   }

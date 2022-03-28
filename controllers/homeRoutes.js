@@ -113,10 +113,13 @@ router.get("/dashboardmentor/:id", async (req, res) => {
           { model: Student, through: { attributes: [], model: LangStudent } },
         ],
       },
-      { model: Appointment },
+      {
+        model: Appointment,
+        include: [{ model: Student }],
+      },
     ],
   });
-
+  //const formattedDate=mentorData.appointments.map(date)=>date.toLocaleDateString("en-US", options);
   const students = mentorData.languages.map((l) => l.students).flat();
   const uniqueIds = [];
 
@@ -132,8 +135,8 @@ router.get("/dashboardmentor/:id", async (req, res) => {
     })
     .map((student) => student.toJSON());
   console.log(uniqueStudents);
-
-  console.log(mentorData);
+  // res.json(mentorData);
+  // console.log(mentorData);
   res.render("mentor-dashboard", {
     mentorData: mentorData.toJSON(),
 
@@ -153,7 +156,7 @@ router.get("/dashboardstudent/:id", async (req, res) => {
         through: { attributes: [], LangStudent },
         include: [{ model: Mentor, through: { attributes: [], LangMentor } }],
       },
-      { model: Appointment },
+      { model: Appointment, include: [{ model: Mentor }] },
     ],
   });
 
