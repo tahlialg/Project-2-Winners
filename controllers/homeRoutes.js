@@ -103,7 +103,7 @@ router.get("/dashboardmentor/:id", async (req, res) => {
     return res.status(301).redirect("/login-mentee");
   }
 
-  const mentor = await Mentor.findByPk(req.params.id, {
+  const mentorData = await Mentor.findByPk(req.params.id, {
     include: [
       {
         // attributes: { exclude: ["langmentor"] },
@@ -113,29 +113,32 @@ router.get("/dashboardmentor/:id", async (req, res) => {
           { model: Student, through: { attributes: [], model: LangStudent } },
         ],
       },
+      { model: Appointment },
     ],
   });
 
-  const students = mentor.languages.map((l) => l.students).flat();
+  const students = mentorData.languages.map((l) => l.students).flat();
   const uniqueIds = [];
 
-  const uniqueStudents = students.filter((element) => {
-    const isDuplicate = uniqueIds.includes(element.id);
+  const uniqueStudents = students
+    .filter((element) => {
+      const isDuplicate = uniqueIds.includes(element.id);
 
-    if (!isDuplicate) {
-      uniqueIds.push(element.id);
+      if (!isDuplicate) {
+        uniqueIds.push(element.id);
 
-      return true;
-    }
-  });
+        return true;
+      }
+    })
+    .map((student) => student.toJSON());
+  console.log(uniqueStudents);
+  // const appointments = await Appointment.findAll({
+  //   where: {
+  //     mentor_id: req.params.id,
+  //   },
+  // });
 
-  const appointments = await Appointment.findAll({
-    where: {
-      mentor_id: req.params.id,
-    },
-  });
-
-  // res.json(student);
+  // res.json(mentorData);
 
   // 1. get mentor's lang preference
   // const mentorLangs = await LangMentor.findAll({
@@ -155,9 +158,10 @@ router.get("/dashboardmentor/:id", async (req, res) => {
   // 3. load the students into res.render
 
   //possibleStudents
+  console.log(mentorData);
   res.render("mentor-dashboard", {
-    mentor,
-    appointments,
+    mentorData: mentorData.toJSON(),
+
     session: req.session,
     uniqueStudents,
     loggedIn: req.session.logged_in,
