@@ -1,13 +1,12 @@
+// this is the student id that the mentor clicked
 
-
-
-
+let studentSelectedId = null;
 
 let elements = {
   // Calendar element
-  calendar : document.getElementById("events-calendar"),
+  calendar: document.getElementById("events-calendar"),
   // Input element
-  events : document.getElementById("events")
+  events: document.getElementById("events"),
 };
 
 // Create the calendar
@@ -36,7 +35,7 @@ let events = {};
 let date_format = "DD/MM/YYYY";
 let current = null;
 
-let showEvents = function(date){
+let showEvents = function (date) {
   // Date string
   let id = jsCalendar.tools.dateToString(date, date_format, "en");
   // Set date
@@ -48,7 +47,8 @@ let showEvents = function(date){
   // Add events on list
   if (events.hasOwnProperty(id) && events[id].length) {
     // Number of events
-    elements.subtitle.textContent = events[id].length + " " + ((events[id].length > 1) ? "events" : "event");
+    elements.subtitle.textContent =
+      events[id].length + " " + (events[id].length > 1 ? "events" : "event");
 
     let div;
     let close;
@@ -56,17 +56,21 @@ let showEvents = function(date){
     for (let i = 0; i < events[id].length; i++) {
       div = document.createElement("div");
       div.className = "event-item";
-      div.textContent = (i + 1) + ". " + events[id][i].name;
+      div.textContent = i + 1 + ". " + events[id][i].name;
       elements.list.appendChild(div);
       close = document.createElement("div");
       close.className = "close";
       close.textContent = "×";
       div.appendChild(close);
-      close.addEventListener("click", (function (date, index) {
-        return function () {
-          removeEvent(date, index);
-        };
-      })(date, i), false);
+      close.addEventListener(
+        "click",
+        (function (date, index) {
+          return function () {
+            removeEvent(date, index);
+          };
+        })(date, i),
+        false
+      );
     }
   } else {
     elements.subtitle.textContent = "No events";
@@ -101,56 +105,102 @@ let removeEvent = function (date, index) {
 // Show current date events
 showEvents(new Date());
 
+let dateSelected = "";
+
 // Add events
-calendar.onDateClick(function(event, date){
+calendar.onDateClick(function (event, date) {
   // Update calendar date
   calendar.set(date);
   // Show events
   showEvents(date);
+  dateSelected = date;
 });
 
-elements.addButton.addEventListener("click", function(){
-  // Get event name
-  let names = [""];
-  let name = prompt(
-    "Event info",
-    names[Math. floor(Math.random() * names.length)] + "Book Session."
-  );
+elements.addButton.addEventListener(
+  "click",
+  function () {
+    // Get event name
+    let names = [""];
+    let name = prompt(
+      "Event info",
+      names[Math.floor(Math.random() * names.length)] + "Book Session."
+    );
 
-  //Return on cancel
-  if (name === null || name === "") {
-    return;
-  }
+    //Return on cancel
+    if (name === null || name === "") {
+      return;
+    }
 
-  // Date string
-  let id = jsCalendar.tools.dateToString(current, date_format, "en");
+    // Date string
+    let id = jsCalendar.tools.dateToString(current, date_format, "en");
 
-  // If no events, create list
-  if (!events.hasOwnProperty(id)) {
-    // Create list
-    events[id] = [];
-  }
+    // If no events, create list
+    if (!events.hasOwnProperty(id)) {
+      // Create list
+      events[id] = [];
+    }
 
-  // If where were no events
-  if (events[id].length === 0) {
-    // Select date
-    calendar.select(current);
-  }
+    // If where were no events
+    if (events[id].length === 0) {
+      // Select date
+      calendar.select(current);
+    }
 
-  // Add event
-  events[id].push({name : name});
+    // Add event
+    events[id].push({ name: name });
 
-  // Refresh events
-  showEvents(current);
-}, false);
+    // Refresh events
+    showEvents(current);
 
+    // call api to make a new appt
 
-function sessionBtn() {
-  const showCalender = document.getElementById('hide');
-  showCalender.style.visibility = 'visible';
+    // 1. get the date [done]
+
+    // 2. get the student info (student id) [done]
+
+    // 3. get them mentor id [done]
+    if (!dateSelected || !studentSelectedId) {
+      console.error(" date not selected or student not selected");
+      return;
+    }
+
+    fetch("/api/appointments", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        date_time: dateSelected,
+        student_id: studentSelectedId,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+      });
+  },
+  false
+);
+
+function sessionBtn(event) {
+  console.log(event);
+  const button = event.target;
+  studentSelectedId = button.getAttribute("data-student-id");
+
+  const showCalender = document.getElementById("hide");
+
+  showCalender.style.visibility = "visible";
 }
 
+setTimeout(() => {
+  const sessionButtons = document.querySelectorAll(".sessionBtn");
+  console.log(sessionButtons);
+  sessionButtons.forEach((button) =>
+    button.addEventListener("click", sessionBtn)
+  );
+}, 1500);
+
 function closeBtn() {
-  const closeCalender = document.getElementById('hide');
-  closeCalender.style.visibility = 'hidden';
+  const closeCalender = document.getElementById("hide");
+  closeCalender.style.visibility = "hidden";
 }

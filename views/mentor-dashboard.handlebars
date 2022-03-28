@@ -3,7 +3,10 @@
 	
   <link rel="stylesheet" href="https://unpkg.com/simple-jscalendar@1.4.4/source/jsCalendar.min.css" integrity="sha384-44GnAqZy9yUojzFPjdcUpP822DGm1ebORKY8pe6TkHuqJ038FANyfBYBpRvw8O9w" crossorigin="anonymous">
 
-<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="/css/dashboard.css">
+
+
+
 
 <div class="container">
 
@@ -18,7 +21,7 @@
     <img src="https://i.ibb.co/yNGW4gg/avatar.png" id="blah" alt="Avatar">
     </section>
     <h1>{{mentorData.first_name}} {{mentorData.first_name}}</h1>
-    <h3>Mentee</h3>
+    <h3>Mentor</h3>
     </td>
     <td>
     <ul>
@@ -34,11 +37,15 @@
     <h2 style="text-align:left;">Mentee Matches</h2>
     
     <ul>
-      <span>
-        <li>Tahlia La Galia
-            <button type="button" class="btn btn-success nt-3" id="sessionBtn" onclick="sessionBtn()">Book Session</button>
+      {{#each uniqueStudents as |student| }}
+ 
+ <span>
+        <li>{{student.first_name}} {{student.last_name}}
+            <button data-student-id="{{student.id}}" type="button" class="btn btn-success nt-3 sessionBtn" >Book Session</button>
         </li>
       </span>
+{{/each}}
+     
     </ul>
     
     <div class="calender" id="hide" style="visibility:hidden">

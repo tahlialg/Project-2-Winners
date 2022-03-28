@@ -5,7 +5,11 @@ const { Appointment } = require("../../models");
 // intitial state should be unaccepted
 router.post("/", async (req, res) => {
   try {
-    const appointmentData = await Appointment.create(req.body);
+    console.log(req.body);
+    const appointmentData = await Appointment.create({
+      ...req.body,
+      mentor_id: req.session.user_id,
+    });
     res.status(200).json(appointmentData);
   } catch (err) {
     res.status(400).json(err);
