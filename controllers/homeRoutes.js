@@ -19,7 +19,7 @@ router.get("/login", (req, res) => {
     return;
   }
 
-  res.render("login");
+  res.render("/login");
 });
 router.get("/signup", (req, res) => {
   if (req.session.loggedIn) {
@@ -187,8 +187,6 @@ router.get("/dashboardstudent/:id", async (req, res) => {
       student_id: req.params.id,
     },
   });
-
-  res.json(student);
   res.render("mentee-dashboard", { mentors: uniqueMentors, appointments, student, session: req.session });
 });
 
