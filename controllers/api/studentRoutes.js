@@ -3,14 +3,23 @@ const { Student, LangStudent } = require("../../models");
 
 router.post("/", async (req, res) => {
   try {
-    const studentData = await Student.create({first_name: req.body.first_name,
-      last_name: req.body.last_name, email: req.body.email, description: req.body.description, postcode: req.body.postcode, password: req.body.password} );
-    const studentLanguages = await LangStudent.create({student_id: studentData.id, language_id: req.body.language_id});
+    const studentData = await Student.create({
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      email: req.body.email,
+      description: req.body.description,
+      postcode: req.body.postcode,
+      password: req.body.password,
+    });
+    const studentLanguages = await LangStudent.create({
+      student_id: studentData.id,
+      languages_id: req.body.language_id,
+    });
 
     req.session.save(() => {
       req.session.user_id = studentData.id;
       req.session.logged_in = true;
-      req.session.user_type = 'student';
+      req.session.user_type = "student";
 
       res.status(200).json([studentData, studentLanguages]);
     });
@@ -44,7 +53,7 @@ router.post("/login", async (req, res) => {
     req.session.save(() => {
       req.session.user_id = studentData.id;
       req.session.logged_in = true;
-      req.session.user_type = 'student';
+      req.session.user_type = "student";
 
       res.json({ Student: studentData, message: "You are now logged in!" });
     });
@@ -78,24 +87,20 @@ router.delete("/:id", async (req, res) => {
     });
 
     if (!studentData) {
-      res
-        .status(400)
-        .json({ message: "Incorrect email, please try again" });
+      res.status(400).json({ message: "Incorrect email, please try again" });
       return;
     }
 
     const validPassword = await studentData.checkPassword(req.body.password);
 
     if (!validPassword) {
-      res
-        .status(400)
-        .json({ message: "Incorrect password, please try again" });
+      res.status(400).json({ message: "Incorrect password, please try again" });
       return;
     }
     studentData.destroy();
     res.json({ message: "user deleted" });
   } catch (err) {
-    res.status(400).json(err,);
+    res.status(400).json(err);
   }
 });
 
