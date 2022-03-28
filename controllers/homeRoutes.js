@@ -10,93 +10,97 @@ const {
 } = require("../models");
 
 router.get("/login", (req, res) => {
+  console.log(req.session.logged_in);
+  if (req.session.logged_in && req.session.user_type === "mentor") {
+    res.redirect("/dashboardmentor/" + req.session.user_id);
+    return;
+  }
+  if (req.session.logged_in && req.session.user_type === "student") {
+    res.redirect("/dashboardstudent/" + req.session.user_id);
+    return;
+  }
+
+  res.render("login", {
+    session: req.session,
+    loggedIn: req.session.logged_in,
+  });
+});
+router.get("/signup", (req, res) => {
   if (req.session.logged_in) {
     res.redirect("/index");
     return;
   }
-
-  res.render("login");
-});
-router.get("/signup", (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect("/index");
-    return;
-  }
-  res.render("signup");
+  res.render("signup", {
+    session: req.session,
+    loggedIn: req.session.logged_in,
+  });
 });
 //sign up page mentee
 
-// router.get("/signup-mentee", (req, res) => {
-//   res.render("signupMentee");
-// });
-// router.get("/signup-mentee", (req, res) => {
-//   if (req.session.loggedIn) {
-//     res.redirect("/home");
-//     return;
-//   }
-//   res.render("signupMentee");
-// });
-// router.get("/signup-mentor", (req, res) => {
-//   res.render("signup-mentor");
-// });
-// router.get("/signup-mentee", (req, res) => {
-//   res.render("signup-mentor");
-// });
-// router.get("/login-mentor", (req, res) => {
-//   res.render("login-mentor");
-// });
-// router.get("/login-mentee", (req, res) => {
-//   res.render("login-mentee");
-// });
-// //about page
-// router.get("/about", (req, res) => {
-//   res.render("about");
-// });
-
 router.get("/signup-mentee", (req, res) => {
-  res.render("signup-mentee");
+  res.render("signup-mentee", {
+    session: req.session,
+    loggedIn: req.session.logged_in,
+  });
 });
 
 router.get("/signup-mentor", (req, res) => {
-  res.render("signup-mentor");
+  res.render("signup-mentor", {
+    session: req.session,
+    loggedIn: req.session.logged_in,
+  });
 });
 router.get("/login-mentor", (req, res) => {
-  res.render("login-mentor");
+  res.render("login-mentor", {
+    session: req.session,
+    loggedIn: req.session.logged_in,
+  });
 });
 router.get("/login-mentee", (req, res) => {
-  res.render("login-mentee");
+  res.render("login-mentee", {
+    session: req.session,
+    loggedIn: req.session.logged_in,
+  });
 });
 //about page
 router.get("/about", (req, res) => {
-  res.render("about");
+  res.render("about", {
+    session: req.session,
+    loggedIn: req.session.logged_in,
+  });
 });
 
-//index/homepage
-// router.get("/index", (req, res) => {
-//   res.render("index");
-// });
+// index/homepage
+router.get("/index", (req, res) => {
+  res.render("index", {
+    session: req.session,
+    loggedIn: req.session.logged_in,
+  });
+});
 
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    res.render('index');
+    res.render("index", {
+      session: req.session,
+      loggedIn: req.session.logged_in,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
 
-router.use(withAuth);
+// router.use(withAuth);
 
 // mentor dashboard
 router.get("/dashboardmentor/:id", async (req, res) => {
-
   // find out the current user type
   // mentor can only view own mentor dashboard
   const userType = req.session.user_type;
-  const isMentor = userType === 'mentor';
+  const isMentor = userType === "mentor";
   const mentorAllowable = isMentor && req.params.id === req.session.user_id;
-  if(mentorAllowable){
-    return res.status(301).redirect('/login-mentee');
+  if (mentorAllowable) {
+    return res.status(301).redirect("/login-mentee");
   }
 
   const mentor = await Mentor.findByPk(req.params.id, {
@@ -105,23 +109,25 @@ router.get("/dashboardmentor/:id", async (req, res) => {
         // attributes: { exclude: ["langmentor"] },
         model: Languages,
         through: { attributes: [], model: LangMentor },
-        include: [{ model: Student, through: { attributes: [], model: LangStudent } }],
+        include: [
+          { model: Student, through: { attributes: [], model: LangStudent } },
+        ],
       },
     ],
   });
 
-  // const students = student.languages.map((l) => l.mentors).flat();
-  // const uniqueIds = [];
+  const students = mentor.languages.map((l) => l.students).flat();
+  const uniqueIds = [];
 
-  // const uniqueMentors = mentors.filter((element) => {
-  //   const isDuplicate = uniqueIds.includes(element.id);
+  const uniqueStudents = students.filter((element) => {
+    const isDuplicate = uniqueIds.includes(element.id);
 
-  //   if (!isDuplicate) {
-  //     uniqueIds.push(element.id);
+    if (!isDuplicate) {
+      uniqueIds.push(element.id);
 
-  //     return true;
-  //   }
-  // });
+      return true;
+    }
+  });
 
   const appointments = await Appointment.findAll({
     where: {
@@ -149,7 +155,13 @@ router.get("/dashboardmentor/:id", async (req, res) => {
   // 3. load the students into res.render
 
   //possibleStudents
-  res.render("mentor-dashboard", { mentor, appointments, session: req.session, });
+  res.render("mentor-dashboard", {
+    mentor,
+    appointments,
+    session: req.session,
+    uniqueStudents,
+    loggedIn: req.session.logged_in,
+  });
 });
 
 //student dashboard
@@ -184,9 +196,14 @@ router.get("/dashboardstudent/:id", async (req, res) => {
     },
   });
 
-  res.json(student);
-  res.render("mentee-dashboard", { mentors: uniqueMentors, appointments, student, session: req.session });
+  // res.json(student);
+  res.render("mentee-dashboard", {
+    mentors: uniqueMentors,
+    appointments,
+    student,
+    session: req.session,
+    loggedIn: req.session.logged_in,
+  });
 });
-
 
 module.exports = router;
