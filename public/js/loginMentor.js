@@ -1,7 +1,3 @@
-// const res = require("express/lib/response");
-
-// const res = require("express/lib/response");
-
 async function loginFormHandler(event) {
   event.preventDefault();
   const email = document.querySelector("#email-login").value.trim();

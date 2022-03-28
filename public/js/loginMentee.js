@@ -4,7 +4,7 @@ async function loginFormHandler(event){
   const password = document.querySelector('#password-login').value.trim();
 
   if (email && password) {
-    const response = await fetch('/api/student/login', {
+    const response = await fetch('/api/students/login', {
       method: 'post',
       body: JSON.stringify({
         email,
@@ -14,7 +14,9 @@ async function loginFormHandler(event){
     });
 
     if (response.ok) {
-      document.location.replace('/mentor-dashboard');
+      const body = await response.json();
+
+      document.location.replace('/dashboardstudent/' + body.id);
     } else {
       alert("Incorrect email or password");
       document.location.reload();

@@ -13,11 +13,11 @@ router.post("/", async (req, res) => {
     });
     const mentorLanguages = await LangMentor.create({
       mentor_id: mentorData.id,
-      language_id: req.body.language_id,
+      languages_id: req.body.language_id,
     });
 
     req.session.save(() => {
-      req.session.user_id = mentorData.id;
+      req.session.user_id = mentorData.id ;
       req.session.logged_in = true;
       req.session.user_type = "mentor";
 

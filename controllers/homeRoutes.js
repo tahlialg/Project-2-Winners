@@ -132,32 +132,7 @@ router.get("/dashboardmentor/:id", async (req, res) => {
     })
     .map((student) => student.toJSON());
   console.log(uniqueStudents);
-  // const appointments = await Appointment.findAll({
-  //   where: {
-  //     mentor_id: req.params.id,
-  //   },
-  // });
 
-  // res.json(mentorData);
-
-  // 1. get mentor's lang preference
-  // const mentorLangs = await LangMentor.findAll({
-  //   where: {
-  //     mentor_id: mentor.id
-  //   }
-  // });
-
-  // console.log(mentorLangs);
-
-  // const langIdsWanted = mentorLangs.map((lang) => lang.languages_id);
-
-  //  [3,4,7]
-
-  // 2. query all the students based on mentor's lang preference
-
-  // 3. load the students into res.render
-
-  //possibleStudents
   console.log(mentorData);
   res.render("mentor-dashboard", {
     mentorData: mentorData.toJSON(),
@@ -178,21 +153,24 @@ router.get("/dashboardstudent/:id", async (req, res) => {
         through: { attributes: [], LangStudent },
         include: [{ model: Mentor, through: { attributes: [], LangMentor } }],
       },
+      { model: Appointment },
     ],
   });
 
   const mentors = student.languages.map((l) => l.mentors).flat();
   const uniqueIds = [];
 
-  const uniqueMentors = mentors.filter((element) => {
-    const isDuplicate = uniqueIds.includes(element.id);
+  const uniqueMentors = mentors
+    .filter((element) => {
+      const isDuplicate = uniqueIds.includes(element.id);
 
-    if (!isDuplicate) {
-      uniqueIds.push(element.id);
+      if (!isDuplicate) {
+        uniqueIds.push(element.id);
 
-      return true;
-    }
-  });
+        return true;
+      }
+    })
+    .map((mentor) => mentor.get({ plain: true }));
 
   const appointments = await Appointment.findAll({
     where: {
@@ -204,7 +182,7 @@ router.get("/dashboardstudent/:id", async (req, res) => {
   res.render("mentee-dashboard", {
     mentors: uniqueMentors,
     appointments,
-    student,
+    student: student.get({ plain: true }),
     session: req.session,
     loggedIn: req.session.logged_in,
   });
