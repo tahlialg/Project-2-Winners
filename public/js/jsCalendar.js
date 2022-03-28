@@ -177,6 +177,7 @@ elements.addButton.addEventListener(
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
+        location.reload();
       });
   },
   false

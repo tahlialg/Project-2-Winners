@@ -76,10 +76,18 @@
       <table class="table table-bordered table-hover table-striped table-sm" id="appointment_list">
           <thead class="thead-dark">
               <tr>
-                  <th scope="col" class="text-center align-middle">Mentor</th>
+                  <th scope="col" class="text-center align-middle">Mentee</th>
                   <th scope="col" class="text-center align-middle">Date</th>
-                  <th scope="col" class="text-center align-middle">Time</th>
+                
               </tr>
+               {{#each mentorData.appointments as |appointment| }}
+               <tr>
+                  <td scope="col" class="text-center align-middle">{{appointment.student.first_name}} {{appointment.student.last_name}}</th>
+                  <td scope="col" class="text-center align-middle">{{appointment.date_time}}</th>
+                 
+                 </tr>
+ 
+                {{/each}}
           </thead>
           <tbody>
           </tbody>
