@@ -17,14 +17,14 @@
     </label>
     <img src="https://i.ibb.co/yNGW4gg/avatar.png" id="blah" alt="Avatar">
     </section>
-    <h1>{{studentData.first_name}} {{studentData.first_name}} </h1>
+    <h1>{{student.first_name}} {{student.first_name}} </h1>
     <h3>Mentee</h3>
     </td>
     <td>
     <ul>
-    <li><b>Full Name</b> <input type="text" name="fname" id="fname" maxlength="100" value= {{mentorData.first_name}} {{mentorData.first_name}} /></li>
-    <li><b>Email</b> <input type="email" name="email" id="email" maxlength="150" value={{studentData.email}}  /></li>
-    <li><b>About <p>{{studenData.description}} </p></b> 
+    <li><b>Full Name</b> <input type="text" name="fname" id="fname" maxlength="100" value= {{student.first_name}} {{student.first_name}} /></li>
+    <li><b>Email</b> <input type="email" name="email" id="email" maxlength="150" value={{student.email}}  /></li>
+    <li><b>About <p>{{student.description}} </p></b> 
     </li>
     </ul>
     </td>
@@ -33,13 +33,16 @@
     <td class="section2">
     <h2 style="text-align:left;">Mentor Matches</h2>
     
-    <ul>
-      <span>
-        <li>Tahlia La Galia
-            <button type="button" class="btn btn-success nt-3" id="sessionBtn" onclick="sessionBtn()">Book Session</button>
+       <ul>
+      {{#each mentors as |mentor| }}
+ 
+ <span>
+        <li>{{mentor.first_name}} {{mentor.last_name}}
+            <button data-mentor-id="{{mentor.id}}" type="button" class="btn btn-success nt-3 sessionBtn" >Book Session</button>
         </li>
       </span>
-    </ul>
+{{/each}}
+</ul>
     
     <div class="calender" id="hide" style="visibility:hidden">
       <div class="description">
