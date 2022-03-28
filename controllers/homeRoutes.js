@@ -10,8 +10,12 @@ const {
 } = require("../models");
 
 router.get("/login", (req, res) => {
-  if (req.session.logged_in) {
-    res.redirect("/index");
+  if (req.session.logged_in && req.session.userType === 'mentor') {
+    res.redirect("/mentee-dashboard/" + req.session.mentor_id);
+    return;
+  }
+  if (req.session.logged_in && req.session.userType === 'student') {
+    res.redirect("/mentor-dashboard/" + req.session.student_id);
     return;
   }
 
@@ -61,7 +65,7 @@ router.get("/signup-mentor", (req, res) => {
   res.render("signup-mentor");
 });
 router.get("/login-mentor", (req, res) => {
-  res.render("login-mentor");
+  res.render("login-mentors");
 });
 router.get("/login-mentee", (req, res) => {
   res.render("login-mentee");
