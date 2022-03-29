@@ -74,13 +74,13 @@
               <tr>
                   <th scope="col" class="text-center align-middle">Mentor</th>
                   <th scope="col" class="text-center align-middle">Date</th>
-                 
+                  <th scope="col" class="text-center align-middle">Cancel</th>
               </tr>
                {{#each student.appointments as |appointment| }}
                <tr>
                   <td scope="col" class="text-center align-middle">{{appointment.mentor.first_name}} {{appointment.mentor.last_name}}</th>
                   <td scope="col" class="text-center align-middle">{{appointment.date_time}}</th>
-                 
+                  <td scope="col"  class="text-center align-middle"> <button data-appointment-id="{{appointment.id}}" type="button" class="btn btn-success nt-3 deleteBtn" >Cancel</button></td>
                  </tr>
  
                 {{/each}}

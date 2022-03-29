@@ -1,7 +1,5 @@
 // this is the student id that the mentor clicked
 
-const { Appointment } = require("../../models");
-
 let studentSelectedId = null;
 
 let elements = {
@@ -203,15 +201,29 @@ setTimeout(() => {
   );
 }, 1500);
 
+function deleteBtn(event) {
+  console.log(event);
+  const button = event.target;
+  const appointmentId = button.getAttribute("data-appointment-id");
+  deleteAppointment(appointmentId);
+}
+
+setTimeout(() => {
+  const deleteButtons = document.querySelectorAll(".deleteBtn");
+  console.log(deleteButtons);
+  deleteButtons.forEach((button) =>
+    button.addEventListener("click", deleteBtn)
+  );
+}, 1500);
+
 function closeBtn() {
   const closeCalender = document.getElementById("hide");
   closeCalender.style.visibility = "hidden";
 }
 
 //delete appointment fetch
-function deleteAppointment(){
-
-  fetch("/api/appointments/" + Appointment.id , {
+function deleteAppointment(AppointmentId) {
+  fetch("/api/appointments/" + AppointmentId, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
