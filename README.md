@@ -19,7 +19,7 @@
 
  ## Table Of Contents
   * [Description](#description)
-  
+  * [Motivation](#motivation)
   * [Walkthrough Demo](#walkthrough-demo)
   * [App image ](#app-image)
   * [Deployed Application Links](#deployed-application-links)
@@ -31,16 +31,20 @@
   * [License](#license)
   
 
+## Motivation
 
+### Our Motivation
 
-## Acceptance Criteria
+Our app team founders consist of aspiring developers who would love to leverage knowledge from experienced developers.
+This led to the idea of developing an app were aspiring developers (mentee) can create an account and are matched to mentors based on coding language inputs with this, Mentorium Emporium was created.  
+
 
 
 ## Usage
 
 To use this application:
 
-* Clone the GitHub repository at: 
+* Clone the GitHub repository at: https://github.com/tahlialg/Project-2-Winners.git
 Download and install node.js.
 
 * To automatically install dependencies, run "npm i" 
@@ -63,7 +67,7 @@ Run the app
 #### * Java Script
 #### * CSS
 #### * Heroku
-
+#### * Insomina
 
 ## Packages
 
@@ -75,6 +79,7 @@ Run the app
 #### * connect-session-sequelize
 #### * express-handlebars
 #### * express-session
+#### * jsCalender
     
 ## Walkthrough Demo
 
@@ -85,13 +90,21 @@ Run the app
 
 
 ## Deployed Application Links
+GitHub repository at: https://github.com/tahlialg/Project-2-Winners.git
 
 ## Contributors
+
+### Built by the following:
+#### Daniel Nelson
+#### Hannah Allison Batt
+#### George Ellis
+#### Tahlia La Galia
 
 ## Questions
   Please e-mail me if you have any questions about this App
   danieln@newground.net.au 
-
+  gellis7@gmail.com
+  Hannah.allisonbatt@gmail.com
 ## License
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
