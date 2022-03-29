@@ -58,7 +58,7 @@ Database Connection
 
 Run the app
 
-* npm start [To start the server] and navigate to http://localhost:3001/ in your browser OR Use the Heroku link in this repository
+* npm start [To start the server] and navigate to http://localhost:3001/ in your browser OR Use the Heroku link https://mentorium-emporium.herokuapp.com/
 
 ## Technologies Used
 
@@ -99,8 +99,8 @@ https://user-images.githubusercontent.com/94213022/160528676-c55e629f-e18b-4dce-
 ![Demo-6](https://user-images.githubusercontent.com/94213022/160528740-557f1c8e-48bb-48bd-a396-21b193b2bd5c.png)
 
 ## Deployed Application Links
-GitHub repository at: https://github.com/tahlialg/Project-2-Winners.git
-
+* GitHub repository at: https://github.com/tahlialg/Project-2-Winners.git
+* Heroku Deployed at: https://mentorium-emporium.herokuapp.com/
 ## Contributors
 
 ### Built by the following:
@@ -111,9 +111,9 @@ GitHub repository at: https://github.com/tahlialg/Project-2-Winners.git
 
 ## Questions
   Please e-mail me if you have any questions about this App
-  danieln@newground.net.au 
-  gellis7@gmail.com
-  Hannah.allisonbatt@gmail.com
+  * danieln@newground.net.au 
+  * gellis7@gmail.com
+  * Hannah.allisonbatt@gmail.com
 ## License
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
