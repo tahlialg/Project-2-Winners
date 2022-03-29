@@ -97,7 +97,7 @@ a {
 .w-100 {
   height: 100vh;
 }
-@media only screen and (max-width: 767px) {
+/* @media only screen and (max-width: 767px) {
   .navbar-nav.ml-auto {
     background: rgba(0, 0, 0, 0.5);
   }
@@ -105,4 +105,4 @@ a {
     font-size: 14px;
     font-weight: normal;
   }
-}
+} */

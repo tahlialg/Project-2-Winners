@@ -318,6 +318,9 @@ body {
   margin: 0 auto;
   text-align: right;
 }
+.col {
+  width: fit-content;
+}
 @media (max-width: 820px) {
   .contain {
     width: 100%;
