@@ -29,5 +29,59 @@
     "email": "OrsonPena@yahoo.com",
     "password": "password12345",
     "description": "I have exams coming up and need some guidance"
+  },
+  { "first_name": "khalid",
+    "last_name": "Rena",
+    "email": "Khalidisawesome@yahoo.com",
+    "password": "password12345",
+    "description": "I have exams coming up and need some guidance"
+  },
+  { "first_name": "Jamie",
+    "last_name": "Owens",
+    "email": "JamieOwens@yahoo.com",
+    "password": "password12345",
+    "description": "I have exams coming up and need some guidance"
+  },
+  { "first_name": "Kate",
+    "last_name": "Winslet",
+    "email": "Kate4leo@yahoo.com",
+    "password": "password12345",
+    "description": "I have exams coming up and need some guidance"
+  },
+  { "first_name": "Orvel",
+    "last_name": "Peck",
+    "email": "Themanwiththemask@yahoo.com",
+    "password": "password12345",
+    "description": "I have exams coming up and need some guidance"
+  },
+  { "first_name": "Gena",
+    "last_name": "George",
+    "email": "Meangirl@yahoo.com",
+    "password": "password12345",
+    "description": "I have exams coming up and need some guidance"
+  },
+  { "first_name": "Samson",
+    "last_name": "Morgan",
+    "email": "Morganspies@yahoo.com",
+    "password": "password12345",
+    "description": "I have exams coming up and need some guidance"
+  },
+  { "first_name": "Liam",
+    "last_name": "mail",
+    "email": "Mailman@yahoo.com",
+    "password": "password12345",
+    "description": "I have exams coming up and need some guidance"
+  },
+  { "first_name": "sammie",
+    "last_name": "Johnston",
+    "email": "sammylovessandwhiches@yahoo.com",
+    "password": "password12345",
+    "description": "I have exams coming up and need some guidance"
+  },
+  { "first_name": "aalia",
+    "last_name": "Pena",
+    "email": "aalialovestocode@yahoo.com",
+    "password": "password12345",
+    "description": "I have exams coming up and need some guidance"
   }
 ]

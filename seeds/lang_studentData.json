@@ -22,5 +22,41 @@
   {
     "student_id": 5,
     "languages_id": 2
+  },
+  {
+    "student_id": 6,
+    "languages_id": 9
+  },
+  {
+    "student_id": 7,
+    "languages_id": 8
+  },
+  {
+    "student_id": 8,
+    "languages_id": 5
+  },
+  {
+    "student_id": 9,
+    "languages_id": 7
+  },
+  {
+    "student_id": 10,
+    "languages_id": 2
+  },
+  {
+    "student_id": 11,
+    "languages_id": 9
+  },
+  {
+    "student_id": 12,
+    "languages_id": 4
+  },
+  {
+    "student_id": 13,
+    "languages_id": 2
+  },
+  {
+    "student_id": 14,
+    "languages_id": 8
   }
 ]
