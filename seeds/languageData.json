@@ -1,5 +1,8 @@
 [
   {
+    "name": "Html"
+  },
+  {
     "name": "Css"
   },
   {
@@ -7,6 +10,9 @@
   },
   {
     "name": "Node.js"
+  },
+  {
+    "name": "Mysql"
   },
   {
     "name": "Express"
