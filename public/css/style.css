@@ -1,6 +1,7 @@
 body {
   background-color: rgb(116, 114, 111);
 }
+
 .carousel-item {
   height: 100vh;
   min-height: 300px;
@@ -31,10 +32,10 @@ body {
   margin-top: 15px;
 }
 header {
-  padding: 20px;
+  padding: 0px;
   text-align: center;
   background: #231010;
-  color: black;
+  color: rgb(2, 2, 2);
 }
 .main-title {
   text-align: center;
