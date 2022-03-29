@@ -1,5 +1,7 @@
 // this is the student id that the mentor clicked
 
+const { Appointment } = require("../../models");
+
 let studentSelectedId = null;
 
 let elements = {
@@ -205,3 +207,21 @@ function closeBtn() {
   const closeCalender = document.getElementById("hide");
   closeCalender.style.visibility = "hidden";
 }
+
+//delete appointment fetch
+function deleteAppointment(){
+
+  fetch("/api/appointments/" + Appointment.id , {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      console.log(res);
+      location.reload();
+    });
+}
+
+//onclick get the id from the appointment itself, maybe set data value to appintment id then run delete appointment

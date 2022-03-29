@@ -33,5 +33,40 @@
     "password": "password12345",
     "description": "let me teach you stuff",
     "postcode": 1100
+  },
+  { "first_name": "Zain",
+    "last_name": "Smith",
+    "email": "ZainSmith@hotmail.com",
+    "password": "password12345",
+    "description": "I'm a pro at Javscript! if (you === needhelp) {greeting = 'How can i help?';}",
+    "postcode": 3400
+  },
+  { "first_name": "John",
+    "last_name": "Wayne",
+    "email": "JohnWayne@outlook.com",
+    "password": "password12345",
+    "description": "I hate apple",
+    "postcode": 6000
+  },
+  { "first_name": "Judy",
+    "last_name": "Dench",
+    "email": "JudyDentch@aol.com",
+    "password": "password12345",
+    "description": "Want to ace your first interview, i can give you tips",
+    "postcode": 3400
+  },
+  { "first_name": "Antonio",
+    "last_name": "Martine",
+    "email": "AntonioMartine@msn.com",
+    "password": "password12345",
+    "description": "I have 30 years of experience, let me guide you through your career",
+    "postcode": 1100
+  },
+  { "first_name": "Kelly",
+    "last_name": "Clarksen",
+    "email": "KellyClarksen@yahoo.com",
+    "password": "password12345",
+    "description": "let me teach you stuff",
+    "postcode": 1100
   }
 ]
