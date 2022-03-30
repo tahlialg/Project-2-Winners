@@ -318,6 +318,9 @@ body {
   margin: 0 auto;
   text-align: right;
 }
+.jsCalendar tbody td.jsCalendar-selected {
+  background-color: #dc3545;
+}
 .col {
   width: fit-content;
 }
