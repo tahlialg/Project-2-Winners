@@ -58,7 +58,7 @@ Database Connection
 
 Run the app
 
-* npm start [To start the server] and navigate to http://localhost:3001/ in your browser OR Use the Heroku link https://mentorium-emporium.herokuapp.com/
+* npm start [To start the server] and navigate to http://localhost:3001/ in your browser OR Use the Heroku link https://mentoriumemporium.herokuapp.com/
 
 ## Technologies Used
 
@@ -100,7 +100,7 @@ https://user-images.githubusercontent.com/94213022/160528676-c55e629f-e18b-4dce-
 
 ## Deployed Application Links
 * GitHub repository at: https://github.com/tahlialg/Project-2-Winners.git
-* Heroku Deployed at: https://mentorium-emporium.herokuapp.com/
+* Heroku Deployed at: https://mentoriumemporium.herokuapp.com/
 ## Contributors
 
 ### Built by the following:
