@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
     });
     const mentorLanguages = await LangMentor.create({
       mentor_id: mentorData.id,
-      languages_id: req.body.language_id,
+      languages_id: req.body.languages_id,
     });
 
     req.session.save(() => {
