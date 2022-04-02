@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
     });
     const studentLanguages = await LangStudent.create({
       student_id: studentData.id,
-      languages_id: req.body.language_id,
+      languages_id: req.body.languages_id,
     });
 
     req.session.save(() => {

@@ -163,6 +163,8 @@ router.get("/dashboardstudent/:id", async (req, res) => {
   const mentors = student.languages.map((l) => l.mentors).flat();
   const uniqueIds = [];
 
+
+
   const uniqueMentors = mentors
     .filter((element) => {
       const isDuplicate = uniqueIds.includes(element.id);
@@ -174,6 +176,10 @@ router.get("/dashboardstudent/:id", async (req, res) => {
       }
     })
     .map((mentor) => mentor.get({ plain: true }));
+
+    console.log(mentors);
+
+    console.log(uniqueMentors);
 
   const appointments = await Appointment.findAll({
     where: {
